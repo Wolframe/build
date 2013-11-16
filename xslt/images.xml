@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<images>
+  <image>
+    <src>Arch_Extra</src>
+    <url>archlinux.png</url>
+    <alt>Archlinux</alt>
+  </image>
+  <image>
+    <src>CentOS_CentOS-5</src>
+    <url>centos.png</url>
+    <alt>Centos 5</alt>
+  </image>
+  <image>
+    <src>CentOS_CentOS-6</src>
+    <url>centos.png</url>
+    <alt>Centos 6</alt>
+  </image>
+  <image>
+    <src>Debian_6.0</src>
+    <url>debian.png</url>
+    <alt>Debian 6</alt>
+  </image>
+  <image>
+    <src>Debian_7.0</src>
+    <url>debian.png</url>
+    <alt>Debian 7</alt>
+  </image>
+  <image>
+    <src>Fedora_17</src>
+    <url>fedora.png</url>
+    <alt>Fedora 17</alt>
+  </image>
+  <image>
+    <src>Fedora_18</src>
+    <url>fedora.png</url>
+    <alt>Fedora 18</alt>
+  </image>
+  <image>
+    <src>Fedora_19</src>
+    <url>fedora.png</url>
+    <alt>Fedora 19</alt>
+  </image>
+  <image>
+    <src>openSUSE_12.2</src>
+    <url>opensuse.png</url>
+    <alt>OpenSuSE 12.2</alt>
+  </image>
+  <image>
+    <src>openSUSE_12.3</src>
+    <url>opensuse.png</url>
+    <alt>OpenSuSE 12.3</alt>
+  </image>
+  <image>
+    <src>openSUSE_13.1</src>
+    <url>opensuse.png</url>
+    <alt>OpenSuSE 13.1</alt>
+  </image>
+  <image>
+    <src>openSUSE_Factory</src>
+    <url>opensuse.png</url>
+    <alt>OpenSuSE Factory</alt>
+  </image>
+  <image>
+    <src>RedHat_RHEL-5</src>
+    <url>redhat.png</url>
+    <alt>Redhat RHEL 5</alt>
+  </image>
+  <image>
+    <src>RedHat_RHEL-6</src>
+    <url>redhat.png</url>
+    <alt>Redhat RHEL 6</alt>
+  </image>
+  <image>
+    <src>SLE_11_SP2</src>
+    <url>sles.png</url>
+    <alt>SuSE Enterprise Linux 11 SP2</alt>
+  </image>
+  <image>
+    <src>SLE_11_SP3</src>
+    <url>sles.png</url>
+    <alt>SuSE Enterprise Linux 11 SP3</alt>
+  </image>
+  <image>
+    <src>xUbuntu_10.04</src>
+    <url>ubuntu.png</url>
+    <alt>Ubuntu 10.04 LTS</alt>
+  </image>
+  <image>
+    <src>xUbuntu_12.04</src>
+    <url>ubuntu.png</url>
+    <alt>Ubuntu 12.04 LTS</alt>
+  </image>
+  <image>
+    <src>xUbuntu_12.10</src>
+    <url>ubuntu.png</url>
+    <alt>Ubuntu 12.10</alt>
+  </image>
+  <image>
+    <src>xUbuntu_13.04</src>
+    <url>ubuntu.png</url>
+    <alt>Ubuntu 13.04</alt>
+  </image>
+  <image>
+    <src>xUbuntu_13.10</src>
+    <url>ubuntu.png</url>
+    <alt>Ubuntu 13.10</alt>
+  </image>
+</images>

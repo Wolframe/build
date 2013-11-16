@@ -86,6 +86,7 @@ catch ( \Exception $e)
 function transformData( $xmlOrig )
 {
 	global $BASE_URL;
+	global $GITHUB_BASE_URL;
 	global $urlRewrite;
 	global $browser;
 		
@@ -101,6 +102,7 @@ function transformData( $xmlOrig )
 	$root->setAttribute( 'base', $base );
 	$root->setAttribute( 'self', $self );
 	$root->setAttribute( 'browser', $browser );
+	$root->setAttribute( 'githubBaseUrl', $GITHUB_BASE_URL );
 	$dom->appendChild( $root );
 	$f = $dom->createDocumentFragment( );
 	$f->appendXML( $xmlOrig );

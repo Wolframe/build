@@ -1,0 +1,16 @@
+/*
+Responsive Template Name: RS-1200 Prototype 51
+File: Custom CSS
+Author: OS Templates
+Author URI: http://www.os-templates.com/
+Licence: <a href="http://www.os-templates.com/template-terms">Website Template Licence</a>
+*/
+
+#rslides figure{}
+#rslides figure img{ display:block; float:left; margin-right:50px; margin-left:36px; max-width:500px; width:auto; max-height:300px; height:auto; }
+/*#rslides figure img{display:block; float:right; width:600px; height:300px;}*/
+/*#rslides figure figcaption{display:block; float:left; width:300px; height:240px; padding:30px; overflow:auto;}*/
+#rslides figure figcaption{display:block; float:left; width:auto; padding:30px; overflow:auto;}
+#rslides figure figcaption h2{font-size:42px; margin-bottom:10px; font-weight:normal; font-style:italic; text-transform:none;}
+#rslides figure figcaption p{line-height:1.6em;}
+#rslides figure figcaption .more{color:#2A5A7A; margin-top:10px; line-height:normal;}

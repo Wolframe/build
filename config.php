@@ -7,3 +7,5 @@ $BROWSERS_USING_CLIENT_XSLT = array(
 
 # name of the project, used to generate base URLs for XSLT stylesheelt
 $BASE_URL = '/develop/builds/#PROJECT#/';
+
+$GITHUB_BASE_URL = 'https://github.com/Wolframe/wolfclient/tree/';

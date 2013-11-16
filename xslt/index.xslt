@@ -63,7 +63,9 @@
               <xsl:variable name="status">
                 <xsl:choose>
                   <xsl:when test="$orig_status='succeeded'">ok</xsl:when>
+                  <xsl:when test="$orig_status='succeeded*'">ok</xsl:when>
                   <xsl:when test="$orig_status='failed'">fail</xsl:when>
+                  <xsl:when test="$orig_status='failed*'">fail</xsl:when>
                   <xsl:when test="$orig_status='scheduled'">run</xsl:when>
                   <xsl:when test="$orig_status='building'">run</xsl:when>
                   <xsl:when test="$orig_status='unresolvable'">fail</xsl:when>

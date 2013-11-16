@@ -19,7 +19,7 @@
     <xsl:variable name="platforms" select="document('platforms.xml')/platforms"/>
     <xsl:variable name="archs" select="document('archs.xml')/archs"/>
     <xsl:variable name="results" select="document('../docs/index.xml')/builds"/>
-    <h2>Build Results</h2>
+    <h2>Build Results <xsl:value-of select="/page/@project"/></h2>
     <table class="matrix">
      <thead>
       <tr>
@@ -30,7 +30,7 @@
             <xsl:variable name="revision" select="revision"/>
             <xsl:element name="a">
               <xsl:attribute name="href">
-		<xsl:value-of select="/page/@githubBaseUrl"/><xsl:value-of select="substring($results/build/revision[.=$revision]/../git_version,1,10)"/>
+		<xsl:value-of select="/page/@scmBaseUrl"/><xsl:value-of select="substring($results/build/revision[.=$revision]/../git_version,1,10)"/>
               </xsl:attribute>
               <xsl:attribute name="title">
                 <xsl:value-of select="substring($results/build/revision[.=$revision]/../git_version,1,10)"/>

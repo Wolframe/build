@@ -15,7 +15,7 @@
   </xsl:template>
 
   <xsl:template match="log">
-    <h2>Build Result&#160;<xsl:value-of select="revision"/>&#160;<xsl:value-of select="arch"/>&#160;<xsl:value-of select="platform"/></h2>
+    <h2>Build Result&#160;<xsl:value-of select="/page/@project"/>,&#160;rev.&#160;<xsl:value-of select="revision"/>,&#160;<xsl:value-of select="arch"/>,&#160;<xsl:value-of select="platform"/></h2>
     <table>
       <tr>
         <td class="label">OSC version:

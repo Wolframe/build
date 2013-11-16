@@ -12,7 +12,7 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-		<link rel="shortcut icon" type="image/x-icon" href="{$base}favicon.ico" />
+		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 
 		<link href="{$base}layout/styles/main.css" rel="stylesheet" type="text/css" media="all"/>
 		<link href="{$base}layout/styles/mediaqueries.css" rel="stylesheet" type="text/css" media="all"/>

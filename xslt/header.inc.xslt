@@ -64,7 +64,7 @@
 					<li class="last-child"><a href="http://www.wolframe.ch/mailman/listinfo" title="Mailing lists">Mailing lists</a></li>
 				</ul>
 			</li>
-			<li class="active"><a class="drop" href="/development/development_daily_builds.html" title="Daily Builds">Daily Builds</a>
+			<li class="active"><a class="drop" href="/development/development_daily_builds.html" title="Smoke tests">Smoke tests</a>
 				<ul>
 					<li><a href="/develop/builds/Wolframe/" title="Wolframe">Wolframe</a></li>
 					<li class="last-child"><a href="/develop/builds/wolfclient/" title="wolfclient">wolfclient</a></li>

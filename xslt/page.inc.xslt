@@ -39,6 +39,20 @@
 				<xsl:apply-templates/>
 			</div>
 		</div>
+
+		<!-- ################################################################################################ -->
+		<div id="sidebar_1" class="sidebar one_quarter">
+			<aside>
+			<!-- ########################################################################################## -->
+				<h2>Smoke tests</h2>
+				<nav>
+					<ul>
+						<li><a href="/develop/builds/Wolframe">Wolframe</a></li>
+						<li><a href="/develop/builds/wolfclient">wolfclient</a></li>
+					</ul>
+				</nav>
+			</aside>
+		</div>
 	</div>
 
       <xsl:call-template name="footer">

@@ -22,3 +22,5 @@ DOWNLOAD_DIR=/var/www/www.wolframe.ch/packages
 # where to build Wolframe on local build machines (non-OBS)
 LOCAL_BUILD_DIR=/root/$OSC_PROJECT
 
+# how manu build results should always be visible
+MAX_BUILD_RESULTS_TO_SHOW=10

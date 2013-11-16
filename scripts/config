@@ -1,0 +1,24 @@
+# home of the Open Build Service project
+OSC_HOME=/root/home:andreas_baumann
+
+# name of the project
+OSC_PROJECT=#PROJECT#
+
+# root of the build web root
+WEB_ROOT=/var/www/www.wolframe.ch/develop/builds/$OSC_PROJECT
+
+# documents
+DATA_DIR=$WEB_ROOT/docs
+
+# cache
+CACHE_DIR=$WEB_ROOT/cache
+
+# stylesheets and metadata
+XSLT_DIR=$WEB_ROOT/xslt
+
+# binary packages for downloading
+DOWNLOAD_DIR=/var/www/www.wolframe.ch/packages
+
+# where to build Wolframe on local build machines (non-OBS)
+LOCAL_BUILD_DIR=/root/$OSC_PROJECT
+

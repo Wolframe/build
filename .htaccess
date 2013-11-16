@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+	SetEnv HTTP_MOD_REWRITE On
+	RewriteEngine On
+	RewriteBase /develop/builds/#PROJECT#
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ /develop/builds/#PROJECT#/index.php/$1 [L,QSA]
+	DirectoryIndex index.php/index.xml
+</IfModule>

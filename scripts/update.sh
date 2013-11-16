@@ -22,6 +22,7 @@ $base/generate_index.sh 2>&1 >>$base/../logs/update.log
 $base/download_newest_logs.sh 2>&1 >>$base/../logs/update.log
 $base/generate_index.sh 2>&1 >>$base/../logs/update.log
 $base/update_binaries.sh 2>&1 >>$base/../logs/update.log
+$base/cleanup.sh 2>&1 >>$base/../logs/update.log
 
 # for debugging
 #cat $base/../logs/update.log 1>&2

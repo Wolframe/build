@@ -66,7 +66,7 @@ for arch in $archs; do
 		fi
 		
 		echo "Getting packages for $platform, $arch"
-		osc -q getbinaries $platform $arch
+		osc -q getbinaries $platform $arch >/dev/null 2>&1
 		mv -fuv binaries/*.rpm $dir 2>/dev/null
 		mv -fuv binaries/*.deb $dir 2>/dev/null
 		mv -fuv binaries/*.pkg.tar.xz $dir 2>/dev/null

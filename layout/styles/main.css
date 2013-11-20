@@ -11,6 +11,7 @@ Licence: <a href="http://www.os-templates.com/template-terms">Website Template L
 @import url(elements.css);
 @import url(framework.css);
 @import url(fonts/font-awesome/font-awesome.min.css);
+/*@import url(fonts/font-awesome/font-awesome.css);*/
 
 /* If you want to add your own css code, please do it in the custom.css file */
 @import url(custom.css);

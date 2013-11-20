@@ -41,8 +41,8 @@
 		</hgroup>
 		<div id="header-contact">
 			<ul class="list none">
-				<li><span class="icon-envelope"></span> <a href="mailto:contact@wolframe.net">contact@wolframe.net</a></li>
-<!--				<li><span class="icon-phone"></span> +xx xxx xxxxxxxxxx</li> -->
+				<li><span class="fa fa-envelope"></span> <a href="mailto:contact@wolframe.net">contact@wolframe.net</a></li>
+<!--				<li><span class="fa fa-phone"></span> +xx xxx xxxxxxxxxx</li> -->
 			</ul>
 		</div>
 	</header>
@@ -61,7 +61,7 @@
 			<li><a class="drop" href="/support.html" title="Support">Support</a>
 				<ul>
 					<li><a href="/faq.html" title="FAQ">FAQ</a></li>
-					<li class="last-child"><a href="http://www.wolframe.ch/mailman/listinfo" title="Mailing lists">Mailing lists</a></li>
+					<li><a href="http://www.wolframe.ch/mailman/listinfo" title="Mailing lists">Mailing lists</a></li>
 				</ul>
 			</li>
 			<li class="active"><a class="drop" href="/development/development_daily_builds.html" title="Smoke tests">Smoke tests</a>

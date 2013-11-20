@@ -25,6 +25,7 @@
 			</nav>
 		</div>
 -->
+<!--		<div class="one_quarter">-->
 		<div class="one_third first">
 			<h2 class="footer_title">Documentation</h2>
 			<nav class="footer_nav">
@@ -34,6 +35,8 @@
 				</ul>
 			</nav>
 		</div>
+
+<!--		<div class="one_quarter">-->
 		<div class="one_third">
 			<h2 class="footer_title">Downloads</h2>
 			<nav class="footer_nav">
@@ -43,11 +46,13 @@
 				</ul>
 			</nav>
 		</div>
+
+<!--		<div class="one_quarter">-->
 		<div class="one_third">
 			<h2 class="footer_title">Contact Us</h2>
 			<p><strong>Email:</strong> <a href="mailto:contact@wolframe.net">contact@wolframe.net</a></p>
 		</div>
-  </div>
+	</div>
 </div>
 
 <div class="wrapper row4">

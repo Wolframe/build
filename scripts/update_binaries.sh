@@ -66,12 +66,12 @@ for arch in $archs; do
 		fi
 		
 		echo "Getting packages for $platform, $arch"
-		osc getbinaries $platform $arch
-		mv -fuv binaries/*.rpm $dir
-		mv -fuv binaries/*.deb $dir
-		mv -fuv binaries/*.pkg.tar.xz $dir
-		rm -rf binaries
-		/sbin/restorecon -Rv $dir
+		osc -q getbinaries $platform $arch
+		mv -fuv binaries/*.rpm $dir 2>/dev/null
+		mv -fuv binaries/*.deb $dir 2>/dev/null
+		mv -fuv binaries/*.pkg.tar.xz $dir 2>/dev/null
+		rm -rf binaries 2>/dev/null
+		/sbin/restorecon -Rv $dir 2>/dev/null
 	done
 done
 

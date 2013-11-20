@@ -62,7 +62,7 @@ while read -r line; do
 				# do some scrubbing
 				REVISION=`echo $line | sed -e "s/.*<revision>\(.*\)<\/revision>.*/\1/"`
 				echo "Cleaning archive revision $REVISION.."
-				find $REVISION -name log.txt -exec rm -f {} \;
+				find $DATA_DIR/$REVISION -name log.txt -exec rm -f {} \;
 			fi
 			;;
 		*)

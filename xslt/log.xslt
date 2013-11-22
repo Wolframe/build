@@ -70,7 +70,7 @@
         </xsl:variable>
         <xsl:element name="td">
           <xsl:attribute name="class">status_<xsl:value-of select="$status"/></xsl:attribute>
-          <xsl:value-of select="$status"/>
+          <xsl:value-of select="$orig_status"/>
         </xsl:element>
       </tr>
       <tr>

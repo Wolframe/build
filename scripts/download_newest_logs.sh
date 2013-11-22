@@ -79,6 +79,10 @@ if test $WANTED_REVISION = $OSC_REVISION; then
 					fi
 					;;
 				
+				unresolvable)
+					echo "" > $LOG_FILE
+					;;
+				
 				*)
 					echo "Ignoring build log for  $WANTED_REVISION, $arch, $platform because of status '$STATUS'.."
 			esac
@@ -93,11 +97,20 @@ for arch in $archs; do
 		LOG_FILE=$DEST_DIR/log.txt
 		XML_FILE=$DEST_DIR/log.xml
 		STATUS=`hget states ${arch}_${platform}`
+		
 		case $STATUS in
 			failed|succeeded)
-				echo "Generating meta XML for $WANTED_REVISION, $arch, $platform.."
 				tail -n 25 < $LOG_FILE > /tmp/tail.$$
 				TAIL=`cat /tmp/tail.$$ | sed -e 's~&~\&amp;~g' -e 's~<~\&lt;~g'  -e  's~>~\&gt;~g'`
+				;;
+			*)
+				TAIL=''
+				;;
+		esac
+				
+		case $STATUS in
+			failed|succeeded|unresolvable)
+				echo "Generating meta XML for $WANTED_REVISION, $arch, $platform.."
 				cat >$XML_FILE <<EOF
 		<log>
 			<revision>$WANTED_REVISION</revision>
@@ -108,10 +121,17 @@ for arch in $archs; do
 			<tail>$TAIL</tail>
 		</log>
 EOF
-				rm /tmp/tail.$$
+				;;
+				
+			*)
+				echo "ERROR: Unknown status '$STATUS'! Please fix!" 1>2
 				;;
 			
 		esac
+		
+		if test -f /tmp/tail.$$; then
+			rm /tmp/tail.$$
+		fi
 	done
 done
 

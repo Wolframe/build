@@ -4,6 +4,9 @@ OSC_HOME=/root/home:andreas_baumann
 # name of the project
 OSC_PROJECT=#PROJECT#
 
+# artifact prefix (e.g. RPM binaries)
+PROJECT_PREFIX=#PROJECT#
+
 # root of the build web root
 WEB_ROOT=/var/www/www.wolframe.ch/develop/builds/$OSC_PROJECT
 

@@ -62,7 +62,7 @@ for arch in $archs; do
 		if test ! -d $dir; then
 			mkdir -p $dir
 		else
-			rm -rf $dir/$OSC_PROJECT*
+			rm -rf $dir/$PROJECT_PREFIX*
 		fi
 		
 		echo "Getting packages for $platform, $arch"
@@ -71,7 +71,7 @@ for arch in $archs; do
 		mv -fuv binaries/*.deb $dir 2>/dev/null
 		mv -fuv binaries/*.pkg.tar.xz $dir 2>/dev/null
 		rm -rf binaries 2>/dev/null
-		/sbin/restorecon -Rv $dir 2>/dev/null
+		/sbin/restorecon -Rv $dir >/dev/null 2>&1
 	done
 done
 

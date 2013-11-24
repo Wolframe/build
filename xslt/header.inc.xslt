@@ -8,20 +8,19 @@
   
 	<head>
 		<title><xsl:value-of select="$title"/></title>
-		<meta charset="iso-8859-1"/>
-
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta charset="iso-8859-1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 
-		<link href="{$base}layout/styles/main.css" rel="stylesheet" type="text/css" media="all"/>
-		<link href="{$base}layout/styles/mediaqueries.css" rel="stylesheet" type="text/css" media="all"/>
-		<link href="{$base}layout/styles/build.css" rel="stylesheet" type="text/css" media="all"/>
+		<link href="{$base}layout/styles/main.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="{$base}layout/styles/mediaqueries.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="{$base}layout/styles/build.css" rel="stylesheet" type="text/css" media="all" />
 
 <!--[if lt IE 9]>
-		<link href="{$base}llayout/styles/ie/ie8.css" rel="stylesheet" type="text/css" media="all">
-		<script src="{$base}llayout/scripts/ie/css3-mediaqueries.min.js"></script>
-		<script src="{$base}llayout/scripts/ie/html5shiv.min.js"></script>
+		<link href="{$base}layout/styles/ie/ie8.css" rel="stylesheet" type="text/css" media="all" />
+		<script src="{$base}layout/scripts/ie/css3-mediaqueries.min.js"></script>
+		<script src="{$base}layout/scripts/ie/html5shiv.min.js"></script>
 <![endif]-->
 
 	</head>
@@ -35,14 +34,24 @@
 
 <div class="wrapper row1">
 	<header id="header" class="full_width clear">
-		<hgroup>
+		<div id="header-logo">
 			<h1><a href="/index.html">Project Wolframe</a></h1>
-			<h2>The Straight Path to Complex Projects</h2>
-		</hgroup>
+			<h2>The Straight Path to Successful Projects</h2>
+		</div>
 		<div id="header-contact">
 			<ul class="list none">
 				<li><span class="fa fa-envelope"></span> <a href="mailto:contact@wolframe.net">contact@wolframe.net</a></li>
 <!--				<li><span class="fa fa-phone"></span> +xx xxx xxxxxxxxxx</li> -->
+			</ul>
+			<ul class="list none">
+				<li class="icons"><a id="googleplus-bttn" href="http://plus.google.com/116915890857205562872?prsrc=3" rel="publisher" target="_top" style="text-decoration:none;">
+					<span>Google+</span></a></li>
+				<li class="icons"><a  id="linkedin-bttn" href="#" target="_top" style="text-decoration:none;">
+					<span>LinkedIn</span></a></li>
+				<li class="icons"><a id="twitter-bttn" href="http://twitter.com/ProjectWolframe" target="_top" style="text-decoration:none;">
+					<span>twitter</span></a></li>
+				<li class="icons"><a id="rss-bttn" href="#" target="_top" style="text-decoration:none;">
+					<span>rss</span></a></li>
 			</ul>
 		</div>
 	</header>
@@ -52,6 +61,7 @@
 <div class="wrapper row2">
 	<nav id="topnav">
 		<ul class="clear">
+<!-- BEGIN MENU -->
 			<li><a href="/index.html" title="Home">Home</a></li>
 <!--
 			<li><a href="/solutions.html" title="Solutions">Solutions</a></li>

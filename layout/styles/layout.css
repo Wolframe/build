@@ -75,9 +75,16 @@ nav ul{margin:0; padding:0; list-style:none;}
 #header hgroup h1 a{color:#E0E0E0;}
 #header hgroup h2{font-size:1.2em;}
 
+#header #header-logo{display:block; float:left; width:auto; clear:right;}
+#header #header-logo h1, #header #header-logo h2{margin:0; font-weight:normal; text-transform:none;}
+#header #header-logo h1{font-family:"Times New Roman", Times, serif; text-shadow:1px 1px 2px #1F1F1F; font-weight:bold; font-size:4em;}
+#header #header-logo h1 a{color:#E0E0E0;}
+#header #header-logo h2{font-size:1.2em;}
+
 #header #header-contact{display:block; float:right; width:auto; clear:right;}
 #header #header-contact ul{margin-top:15px;}
 #header #header-contact li{display:inline; margin:0 0 0 15px; padding:0 0 0 15px; border-left:1px solid #C0BAB6;}
+#header #header-contact li.icons { display:inline; margin:0px; padding:0px; border-left:none; }
 #header #header-contact li:first-child{margin:0; padding:0; border:none;}
 
 /*----------------------------------------------Content Area-------------------------------------*/
@@ -103,7 +110,7 @@ nav ul{margin:0; padding:0; list-style:none;}
 /*----------------------------------------------Footer-------------------------------------*/
 
 #footer{padding:30px 0;}
-#footer .footer_title{font-size:1.2em; margin-bottom:40px; padding-bottom:10px; border-bottom:1px solid #919191;}
+#footer .footer_title{font-size:1.2em; margin-bottom:25px; padding-bottom:10px; border-bottom:1px solid #919191;}
 #footer div{margin-bottom:0;}
 #footer .tweet-container li{margin-top:18px; padding-top:18px; border-top:1px solid #333333;}
 #footer .tweet-container li:first-child{margin-top:0; padding-top:0; border-top:none;}

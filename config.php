@@ -12,4 +12,4 @@ $PROJECT = '#PROJECT#';
 $BASE_URL = "/develop/builds/$PROJECT/";
 
 # where is the project stored (a web interface to a git repo, e.g. github)
-$GITHUB_BASE_URL = 'https://github.com/#REPOSITORY#/#PROJECT#/tree/';
+$SCM_BASE_URL = 'https://github.com/#REPOSITORY#/#PROJECT#/tree/';

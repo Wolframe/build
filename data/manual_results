@@ -1,0 +1,12 @@
+Slackware_14	x86_64	disabled
+Slackware_14	i586	disabled
+FreeBSD_9	x86_64	disabled
+FreeBSD_9	i586	disabled
+FreeBSD_8	x86_64	disabled
+FreeBSD_8	i586	disabled
+NetBSD_6	x86_64	disabled
+NetBSD_6	i586	disabled
+Scientific_Linux-5	x86_64	disabled
+Scientific_Linux-5	i586	disabled
+Scientific_Linux-6	x86_64	disabled
+Scientific_Linux-6	i586	disabled

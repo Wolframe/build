@@ -42,6 +42,21 @@
     <alt>Fedora 19</alt>
   </image>
   <image>
+    <src>FreeBSD_8</src>
+    <url>freebsd.png</url>
+    <alt>FreeBSD 8</alt>
+  </image>
+  <image>
+    <src>FreeBSD_9</src>
+    <url>freebsd.png</url>
+    <alt>FreeBSD 9</alt>
+  </image>
+  <image>
+    <src>NetBSD_6</src>
+    <url>netbsd.png</url>
+    <alt>NetBSD 9</alt>
+  </image>
+  <image>
     <src>openSUSE_12.2</src>
     <url>opensuse.png</url>
     <alt>OpenSuSE 12.2</alt>
@@ -70,6 +85,21 @@
     <src>RedHat_RHEL-6</src>
     <url>redhat.png</url>
     <alt>Redhat RHEL 6</alt>
+  </image>
+  <image>
+    <src>Scientific_Linux-5</src>
+    <url>scili.png</url>
+    <alt>Scientific Linux 5</alt>
+  </image>
+  <image>
+    <src>Scientific_Linux-6</src>
+    <url>scili.png</url>
+    <alt>Scientific Linux 6</alt>
+  </image>
+  <image>
+    <src>Slackware_14</src>
+    <url>slackware.png</url>
+    <alt>Slackware Linux 14</alt>
   </image>
   <image>
     <src>SLE_11_SP2</src>

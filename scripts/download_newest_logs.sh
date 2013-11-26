@@ -31,7 +31,7 @@ hinit states
 if test $WANTED_REVISION = $OSC_REVISION; then
 	OLDIFS=$IFS
 	osc results > /tmp/results.$$
-	cat $base/../data/manual_results >> /tmp/results.$$
+	cut -f1-3 $base/../data/manual_results >> /tmp/results.$$
 	while read -r PLATFORM ARCH STATUS; do
 		hput states "${ARCH}_${PLATFORM}" $STATUS
 	done < /tmp/results.$$

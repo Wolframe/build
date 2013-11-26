@@ -39,11 +39,18 @@ case $OP in
 		;;
 	
 	status)
+		isalive "$HOST"
+		if test $RES -eq 0; then
+			echo "Is not running.."
+			exit 1
+		else
+			echo "Is running.."
+			exit 0
+		fi
 		;;
 	
 	list)
-		vms=`VBoxManage list vms | cut -f 2 -d \"`
-		echo $vms
+		cut -f4-5 $base/../../data/manual_results
 		;;
 	*)
 		echo "ERROR: Unknown operation $OP" 1>&2

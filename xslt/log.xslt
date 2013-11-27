@@ -54,7 +54,7 @@
         </td>
       </tr>
       <tr>
-        <td class="label">OSB build state:
+        <td class="label">Build state:
         </td>
         <xsl:variable name="orig_status" select="status"/>
         <xsl:variable name="status">

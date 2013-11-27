@@ -22,6 +22,8 @@ if test "x$OSB_STATUS" != 'xscheduled'; then
 	exit 0
 fi
 
+# we are building now, indicate status
+set_status "building"
 
 echo "Updating project '$OSC_PROJECT' from git repository.."
 # building always current master, update it
@@ -44,6 +46,7 @@ case $PLATFORM.$LINUX_DIST in
 	LINUX.redhat*)
 		export OSB_PLATFORM
 		packaging/redhat/buildlocal.sh
+		RET=$?
 		;;
 		
 	*)
@@ -51,4 +54,13 @@ case $PLATFORM.$LINUX_DIST in
 		;;
 esac
 
-echo "Done."
+# toggle status on master, we can be 'succeeded*' or 'failed*' (the star is
+# the temporary state as seen by the builder, the coordinator has to ACK first
+# in order to get to the final 'succeeded' and 'failed' states)
+if test $RET -eq 0; then
+	set_status "succeeded*"
+	echo "Done (succeeded)."
+else
+	set_status "failed*"
+	echo "Done (failed)."
+fi

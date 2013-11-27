@@ -1,0 +1,3 @@
+# maximal number of builds this coordinator allows to run in parallel
+# (adapt to CPU and power of machine!)
+MAX_VMS=1

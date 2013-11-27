@@ -1,0 +1,5 @@
+# name of the project
+OSC_PROJECT=#PROJECT#
+
+# where to build Wolframe on local build machines (non-OBS)
+LOCAL_BUILD_DIR=/root/$OSC_PROJECT

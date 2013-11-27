@@ -10,7 +10,7 @@ case "$0" in
 		;;
 esac
                         
-. $base/../scripts/localbuild/env.inc
+. $base/env.inc
 
 guess_os
 

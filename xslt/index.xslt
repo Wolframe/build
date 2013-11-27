@@ -68,6 +68,8 @@
                   <xsl:when test="$orig_status='failed*'">fail</xsl:when>
                   <xsl:when test="$orig_status='scheduled'">run</xsl:when>
                   <xsl:when test="$orig_status='building'">run</xsl:when>
+                  <xsl:when test="$orig_status='building*'">run</xsl:when>
+                  <xsl:when test="$orig_status='finished*'">run</xsl:when>
                   <xsl:when test="$orig_status='unresolvable'">fail</xsl:when>
                   <xsl:when test="$orig_status='disabled'">disa</xsl:when>
                   <xsl:otherwise>??</xsl:otherwise>

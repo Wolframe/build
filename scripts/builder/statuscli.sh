@@ -15,7 +15,7 @@ esac
 
 print_usage( )
 {
-	echo "Usage: statuscli ( get | set STATUS )" 1>&2
+	echo "Usage: statuscli ( get | set STATUS | upload <file> )" 1>&2
 	echo "       where STATUS is one of the OSB result states" 1>&2
 	exit 2
 }
@@ -37,9 +37,14 @@ case $# in
 	2)
 		OP=$1
 		STATUS=$2
-		if test "x$OP" != "xset"; then
+		if test "x$OP" = "xset"; then
+			STATUS=$2
+		else
+		if test "x$OP" = "xupload"; then
+			FILE=$2
+		else
 			echo "ERROR: unknown operation '$OP'" 1>&2
-			print_usage
+		fi
 		fi
 		;;
 		
@@ -68,6 +73,11 @@ case $OP in
 			exit 1
 		fi
 		echo "Status set to $STATUS."
+		;;
+
+	upload)
+		get_status
+		upload_file $FILE
 		;;
 		
 	*)

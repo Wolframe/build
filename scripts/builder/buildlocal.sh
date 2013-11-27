@@ -18,12 +18,12 @@ esac
 # either awakened by the coordinator and he will shut us down again
 # or the user is doing something manually on the virtual machine
 get_status
-if test "x$OSB_STATUS" != 'xscheduled'; then
+if test "x$OSB_STATUS" != 'xbuilding'; then
 	exit 0
 fi
 
 # we are building now, indicate status
-set_status "building"
+set_status "building*"
 
 echo "Updating project '$OSC_PROJECT' from git repository.."
 # building always current master, update it
@@ -42,15 +42,31 @@ if test $PLATFORM = "LINUX"; then
 fi
 
 # depending on the packaging system we call the correct local build script
+echo "Started local build script.."
 case $PLATFORM.$LINUX_DIST in
 	LINUX.redhat*)
 		export OSB_PLATFORM
-		packaging/redhat/buildlocal.sh
+		packaging/redhat/buildlocal.sh >build.log 2>&1
 		RET=$?
 		;;
 		
 	*)
 		echo "ERROR: no clue how to build on '$PLATFORM', '$LINUX_DIST'"
+		;;
+esac
+
+# upload build artifact to the master, depending on the platform different
+# artifacts lie around in different places :-)
+upload_file $LOCAL_BUILD_DIR/build.log
+case $PLATFORM.$LINUX_DIST in
+	LINUX.redhat*)
+		for file in $HOME/rpmbuild/RPMS/x86_64/$PROJECT_PREFIX*.rpm; do
+			upload_file $file
+		done
+		;;
+		
+	*)
+		echo "ERROR: no clue how to upload artifacts on '$PLATFORM', '$LINUX_DIST'"
 		;;
 esac
 

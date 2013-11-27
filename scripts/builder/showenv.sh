@@ -20,4 +20,6 @@ echo "OS Version: $OS_MAJOR_VERSION.$OS_MINOR_VERSION"
 if test $PLATFORM = "LINUX"; then
 	echo "Distribution: $LINUX_DIST"
 	echo "Linux version: $LINUX_REV"
+	echo "OSB_PLATFORM: $OSB_PLATFORM"
 fi
+

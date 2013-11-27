@@ -12,17 +12,43 @@ esac
                         
 . $base/config
 . $base/env.inc
+. $base/status.inc
 
+# first see, if we really have something to do, otherwise we were
+# either awakened by the coordinator and he will shut us down again
+# or the user is doing something manually on the virtual machine
+get_status
+if test "x$OSB_STATUS" != 'xscheduled'; then
+	exit 0
+fi
+
+
+echo "Updating project '$OSC_PROJECT' from git repository.."
+# building always current master, update it
 cd $LOCAL_BUILD_DIR
 git pull
 
 guess_os
 
-echo "Architecture: $ARCH"
-echo "Operating System: $PLATFORM"
-echo "OS Version: $OS_MAJOR_VERSION.$OS_MINOR_VERSION"
+echo "Building for:"
+echo "  Architecture: $ARCH"
+echo "  Operating System: $PLATFORM"
+echo "  OS Version: $OS_MAJOR_VERSION.$OS_MINOR_VERSION"
 if test $PLATFORM = "LINUX"; then
-        echo "Distribution: $LINUX_DIST"
+	echo "  Distribution: $LINUX_DIST"
+	echo "  OSB_PLATFORM: $OSB_PLATFORM"
 fi
+
+# depending on the packaging system we call the correct local build script
+case $PLATFORM.$LINUX_DIST in
+	LINUX.redhat*)
+		export OSB_PLATFORM
+		packaging/redhat/buildlocal.sh
+		;;
+		
+	*)
+		echo "ERROR: no clue how to build on '$PLATFORM', '$LINUX_DIST'"
+		;;
+esac
 
 echo "Done."

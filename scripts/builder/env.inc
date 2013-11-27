@@ -7,6 +7,7 @@ guess_os( )
 
 	LINUX_DIST=""
 	LINUX_REV=""
+	OSB_PLATFORM=""
 
 	case "$UNAME_SYSTEM.$UNAME_RELEASE" in
 		Linux*)		PLATFORM=LINUX
@@ -41,10 +42,12 @@ guess_os( )
 						*Scientific*)
 							LINUX_DIST='redhat'
 							LINUX_REV=`echo $rev | tr -s ' ' '\t' | cut -f 1 -d .`
+							OSB_PLATFORM="scilin_version $rev"
 							;;
 						*)
 							LINUX_DIST='unknown'
 							LINUX_REV='unknown'
+							OSB_PLATFORM='unknown'
 							;;
 					esac
 				else
@@ -62,12 +65,21 @@ guess_os( )
 					elif test -f /etc/slackware-version; then
 						LINUX_DIST='slackware'
 						LINUX_REV=`cat /etc/slackware-version | cut -d ' ' -f 2 | cut -d . -f 1,2`
-					elif test -f /etc/redhat-release; then
+					elif test -f /etc/system-release; then
 						LINUX_DIST='redhat'
-						LINUX_REV=`cat /etc/redhat-release | sed s/.*release\ // | sed s/\ .*// | cut -f 1 -d .`
+						LINUX_REV=`cat /etc/system-release | cut -f 4 -d ' '`
+						osb_major=`echo $LINUX_REV | cut -f 1 -d .`
+						osb_minor=`echo $LINUX_REV | cut -f 2 -d .`
+						if test $osb_minor -lt 10; then
+							osb_minor="${osb_minor}0"
+						fi
+						OSB_PLATFORM="scilin_version ${osb_major}${osb_minor}"
 					elif test -f /etc/fedora-release; then
 						LINUX_DIST='redhat'
 						LINUX_REV=`cat /etc/fedora-release | cut -f 3 -d ' '`
+					elif test -f /etc/redhat-release; then
+						LINUX_DIST='redhat'
+						LINUX_REV=`cat /etc/redhat-release | sed s/.*release\ // | sed s/\ .*// | cut -f 1 -d .`
 					elif test -f /etc/SuSE-release; then
 						grep "SUSE Linux Enterprise Server" /etc/SuSE-release
 						if test $? = 0; then
@@ -77,12 +89,10 @@ guess_os( )
 							LINUX_DIST='suse'
 							LINUX_REV=`grep VERSION /etc/SuSE-release | cut -f 3 -d ' '`
 						fi
-					elif test -f /etc/system-release; then
-						LINUX_DIST='redhat'
-						LINUX_REV=`cat /etc/system-release | cut -f 4 -d ' '`
 					else
 						LINUX_DIST='unknown'
 						LINUX_REV='unknown'
+						OSB_PLATFORM='unknown'
 					fi
 				fi
 				;;

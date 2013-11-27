@@ -3,3 +3,10 @@ OSC_PROJECT=#PROJECT#
 
 # where to build Wolframe on local build machines (non-OBS)
 LOCAL_BUILD_DIR=/root/$OSC_PROJECT
+
+# FTP server where the master runs   
+FTP_SERVER=#HOST#
+
+# FTP credentials
+FTP_USER=#USER#
+FTP_PASS=#PASS#

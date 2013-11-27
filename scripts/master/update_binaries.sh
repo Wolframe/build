@@ -40,7 +40,7 @@ platforms=`cat $REPO_CACHE | cut -f 1 | sort | uniq`
 # case wait and don't download binaries right now
 OLDIFS=$IFS
 osc results > /tmp/results.$$
-cut -f1-3 $base/../data/manual_results >> /tmp/results.$$
+cut -f1-3 $base/../../data/manual_results >> /tmp/results.$$
 while read -r PLATFORM ARCH STATUS; do
 	if test $STATUS != "succeeded" -a $STATUS != "failed" -a $STATUS != 'disabled' -a $STATUS != 'unresolvable'; then
 		echo "Not updating binaries now, platform $PLATFORM, arch $ARCH is still building.."

@@ -31,7 +31,7 @@ hinit states
 if test $WANTED_REVISION = $OSC_REVISION; then
 	OLDIFS=$IFS
 	osc results > /tmp/results.$$
-	cut -f1-3 $base/../data/manual_results >> /tmp/results.$$
+	cut -f1-3 $base/../../data/manual_results >> /tmp/results.$$
 	while read -r PLATFORM ARCH STATUS; do
 		hput states "${ARCH}_${PLATFORM}" $STATUS
 	done < /tmp/results.$$
@@ -45,7 +45,7 @@ else
 			STATUS=`xsltproc --stringparam revision $WANTED_REVISION \
 				--stringparam arch $arch \
 				--stringparam platform $platform \
-				$base/../xslt/get_status.xslt $base/../xslt/empty.xml |\
+				$base/../../xslt/get_status.xslt $base/../../xslt/empty.xml |\
 				tr -d ' ' | tr -d "\n"`
 			hput states "${arch}_${platform}" $STATUS
 		done

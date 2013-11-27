@@ -31,7 +31,7 @@ fi
 REPO_CACHE=$CACHE_DIR/repo.cache
 if test ! -f $REPO_CACHE; then
 	osc repos | tr -s ' ' "\t" > $REPO_CACHE
-	cat $base/../config/manual_repos >> $REPO_CACHE
+	cat $base/../../config/manual_repos >> $REPO_CACHE
 fi
 
 if test ! -d $XSLT_DIR; then

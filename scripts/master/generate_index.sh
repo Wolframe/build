@@ -45,7 +45,7 @@ RESULTS="$RESULTS<revision>$OSC_REVISION</revision>"
 RESULTS="$RESULTS<git_version>$GIT_VERSION</git_version>"
 RESULTS="$RESULTS<results>"
 osc results > /tmp/results.$$
-cut -f1-3 $base/../data/manual_results >> /tmp/results.$$
+cut -f1-3 $base/../../data/manual_results >> /tmp/results.$$
 while read -r PLATFORM ARCH STATUS; do
 	hput states "${ARCH}_${PLATFORM}" $STATUS
 	RESULTS="$RESULTS<result><platform>$PLATFORM</platform><arch>$ARCH</arch><status>$STATUS</status></result>"

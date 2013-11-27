@@ -2,3 +2,25 @@ build
 =====
 
 smoke test, build system, overview pages
+
+master
+------
+
+requirements:
+- osc command line tool for OBS and a project with packages on it
+- web server to host the puglished overview and log info pages
+
+coordinator
+-----------
+
+requirements:
+- virtualization software, currently only VirtualBox is supported
+- wget and ftp client
+
+builder
+-------
+
+requirements:
+- cron (for @reboot)
+- git (to check out software)
+- wget and ftp client

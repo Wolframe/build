@@ -4,5 +4,5 @@ Customize #PROJECT# in 'scripts/config'.
 
 Add to the crontab a line like:
 
-*/15 * * * * /var/www/www.wolframe.ch/develop/builds/#PROJECT#/scripts/update.sh
+*/15 * * * * /var/www/www.wolframe.ch/develop/builds/#PROJECT#/scripts/master/update.sh
 

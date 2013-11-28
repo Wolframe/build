@@ -42,7 +42,13 @@ guess_os( )
 						*Scientific*)
 							LINUX_DIST='redhat'
 							LINUX_REV=`echo $rev | tr -s ' ' '\t' | cut -f 1 -d .`
-							OSB_PLATFORM="scilin_version $rev"
+							osb_rev=`echo $rev | tr -s ' ' '\t' | cut -f 2`
+							osb_major=`echo $osb_rev | cut -f 1 -d .`
+							osb_minor=`echo $osb_rev | cut -f 2 -d .`
+							if test $osb_minor -lt 10; then
+								osb_minor="${osb_minor}0"
+							fi
+							OSB_PLATFORM="scilin_version ${osb_major}${osb_minor}"
 							;;
 						*)
 							LINUX_DIST='unknown'

@@ -27,8 +27,9 @@ case $# in
 		print_usage
 		;;
 	
-	1)
+	1|2)
 		OP=$1
+		STATUS=$2 #optional
 		if test "x$OP" != 'xlist'; then
 			echo "ERROR: unknown operation '$OP'" 1>&2
 			print_usage
@@ -59,20 +60,15 @@ esac
 
 print_status( )
 {
-	echo "Status on master:"
-	echo "OSB_NAME: $OSB_NAME"
-	echo "Architecture: $OSB_ARCH"
-	echo "OSB Status: $OSB_STATUS"
-	echo "Virtual manchine name: $OSB_VM_NAME"
-	echo "Hostname: $OSB_HOST_NAME"
+	printf "$OSB_NAME\t$OSB_ARCH\t$OSB_STATUS\t\"$OSB_VM_NAME\"\t$OSB_HOST_NAME\n"
 }
 
 case $OP in
 	list)
-		get_first_status
+		get_first_status $STATUS
 		while test "x$OSB_NAME" != 'x'; do
 			print_status
-			get_next_status
+			get_next_status $STATUS
 		done
 		;;
 		

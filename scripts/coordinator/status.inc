@@ -18,6 +18,8 @@ remove_creds( )
 
 get_first_status( )
 {
+	STATUS=$1
+
 	write_creds
 
 	cat >/tmp/build.$$ <<EOF
@@ -29,20 +31,27 @@ EOF
 	remove_creds
 
 	cat manual_results | tr -s ' ' '_' >/tmp/build2.$$
+	rm manual_results
 
-	get_next_status
+	get_next_status $STATUS
 }
 
 get_next_status( )
 {
+	STATUS=$1
+
 	read -r OSB_NAME OSB_ARCH OSB_STATUS _VM_NAME OSB_HOST_NAME </tmp/build2.$$
 	OSB_VM_NAME=`echo $_VM_NAME | tr -s '_' ' ' | tr -d \"`
 
 	if test "x$OSB_NAME" = "x"; then
 		rm /tmp/build2.$$
 	else
-		tail -n +2 /tmp/build2.$$ >/tmp/build3.$$
+		sed '1d' /tmp/build2.$$ >/tmp/build3.$$
 		mv -f /tmp/build3.$$ /tmp/build2.$$
+
+		if test "x$STATUS" != "x" -a "x$STATUS" != "x$OSB_STATUS"; then
+			get_next_status $STATUS
+		fi
 	fi
 }
 

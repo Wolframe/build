@@ -41,6 +41,12 @@ if test $PLATFORM = "LINUX"; then
 	echo "  OSB_PLATFORM: $OSB_PLATFORM"
 fi
 
+# force usage of ccache
+CC='ccache gcc'
+export CC
+CXX='ccache g++'
+export CXX
+
 # depending on the packaging system we call the correct local build script
 echo "Started local build script.."
 case $PLATFORM.$LINUX_DIST in

@@ -16,7 +16,7 @@ remove_creds( )
 	mv -f /tmp/build.$$ $HOME/.netrc
 }
 
-list_status( )
+get_first_status( )
 {
 	write_creds
 
@@ -26,11 +26,24 @@ quit
 EOF
 	ftp -p $FTP_SERVER </tmp/build.$$
 
-	cat manual_results
-
-	rm -f manual_results
-
 	remove_creds
+
+	cat manual_results | tr -s ' ' '_' >/tmp/build2.$$
+
+	get_next_status
+}
+
+get_next_status( )
+{
+	read -r OSB_NAME OSB_ARCH OSB_STATUS _VM_NAME OSB_HOST_NAME </tmp/build2.$$
+	OSB_VM_NAME=`echo $_VM_NAME | tr -s '_' ' ' | tr -d \"`
+
+	if test "x$OSB_NAME" = "x"; then
+		rm /tmp/build2.$$
+	else
+		tail -n +2 /tmp/build2.$$ >/tmp/build3.$$
+		mv -f /tmp/build3.$$ /tmp/build2.$$
+	fi
 }
 
 # get current data and status for this builder

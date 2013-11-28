@@ -57,19 +57,28 @@ case $# in
 		;;
 esac
 
+print_status( )
+{
+	echo "Status on master:"
+	echo "OSB_NAME: $OSB_NAME"
+	echo "Architecture: $OSB_ARCH"
+	echo "OSB Status: $OSB_STATUS"
+	echo "Virtual manchine name: $OSB_VM_NAME"
+	echo "Hostname: $OSB_HOST_NAME"
+}
+
 case $OP in
 	list)
-		list_status
+		get_first_status
+		while test "x$OSB_NAME" != 'x'; do
+			print_status
+			get_next_status
+		done
 		;;
 		
 	get)
 		get_status $PLATFORM $ARCH
-		echo "Status on master:"
-		echo "OSB_NAME: $OSB_NAME"
-		echo "Architecture: $OSB_ARCH"
-		echo "OSB Status: $OSB_STATUS"
-		echo "Virtual manchine name: $OSB_VM_NAME"
-		echo "Hostname: $OSB_HOST_NAME"
+		print_status
 		;;
 	
 	set)

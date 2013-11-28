@@ -91,7 +91,7 @@ case $PLATFORM.$LINUX_DIST in
 		if test "x$ARCH" = "xx86"; then
 			ARCH="i386"
 		fi
-		for file in $HOME/slackbuild/PKGS/x86_64/$PROJECT_PREFIX*.tgz; do
+		for file in $HOME/slackbuild/PKGS/$ARCH/$PROJECT_PREFIX*.tgz; do
 			upload_file $file
 		done
 		;;

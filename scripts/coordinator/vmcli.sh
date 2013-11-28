@@ -14,15 +14,15 @@ esac
 
 if test $# -ne 3; then
 	if test $# -ne 1 -o "x$1" != "xlist"; then
-		echo "Usage: vmcli <VM machine> <network host> ( start | stop | status )" 1>&2
+		echo "Usage: vmcli ( start | stop | status ) <VM machine> <network host>" 1>&2
 		echo "       vmcli list" 1>&2
 		exit 2
 	fi
 	OP=$1
 else
-	MACHINE=$1
-	HOST=$2
-	OP=$3
+	OP=$1
+	MACHINE=$2
+	HOST=$3
 fi
 
 case $OP in

@@ -1,3 +1,10 @@
 # maximal number of builds this coordinator allows to run in parallel
 # (adapt to CPU and power of machine!)
 MAX_VMS=1
+
+# FTP server where the master runs   
+FTP_SERVER=#HOST#
+
+# FTP credentials
+FTP_USER=#USER#
+FTP_PASS=#PASS#

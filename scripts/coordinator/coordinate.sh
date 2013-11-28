@@ -51,6 +51,12 @@ if test $has_tasks -eq 0; then
 	echo "No new tasks scheduled."
 fi
 
+# check for terminated builders, stop the VMs if they are
+# finished (succeeded* or failed*), mark the status as final
+# (succeeded or failed).
+terminate_tasks "succeeded*"
+terminate_tasks "failed*"
+
 # check how many builders are currently running, if we
 # are over the limit we can't start more
 nof_running_vms
@@ -62,11 +68,6 @@ else
 	schedule_tasks
 fi
 
-# check now for terminated builders, stop the VMs if they are
-# finished (succeeded* or failed*), mark the status as final
-# (succeeded or failed).
-terminate_tasks "succeeded*"
-terminate_tasks "failed*"
 
 exit
 

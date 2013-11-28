@@ -64,6 +64,11 @@ case $PLATFORM.$LINUX_DIST in
 		RET=$?
 		;;
 		
+	LINUX.slackware*)
+		packaging/slackware/buildlocal.sh >build.log 2>&1
+		RET=$?
+		;;
+		
 	*)
 		echo "ERROR: no clue how to build on '$PLATFORM', '$LINUX_DIST'"
 		;;
@@ -78,6 +83,12 @@ case $PLATFORM.$LINUX_DIST in
 			ARCH="i386"
 		fi
 		for file in $HOME/rpmbuild/RPMS/$ARCH/$PROJECT_PREFIX*.rpm; do
+			upload_file $file
+		done
+		;;
+	
+	LINUX.slackware*)
+		for file in $HOME/slackbuild/PKGS/x86_64/$PROJECT_PREFIX*.tgz; do
 			upload_file $file
 		done
 		;;

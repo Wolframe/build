@@ -22,6 +22,9 @@ if test "x$OSB_STATUS" != 'xbuilding'; then
 	exit 0
 fi
 
+# udpate ourselves
+git pull
+
 # we are building now, indicate status
 set_status "building*"
 

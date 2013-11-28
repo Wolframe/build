@@ -74,7 +74,10 @@ esac
 upload_file $LOCAL_BUILD_DIR/build.log
 case $PLATFORM.$LINUX_DIST in
 	LINUX.redhat*)
-		for file in $HOME/rpmbuild/RPMS/x86_64/$PROJECT_PREFIX*.rpm; do
+		if test "x$ARCH" = "xx86"; then
+			ARCH="i386"
+		fi
+		for file in $HOME/rpmbuild/RPMS/$ARCH/$PROJECT_PREFIX*.rpm; do
 			upload_file $file
 		done
 		;;

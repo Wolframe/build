@@ -15,9 +15,11 @@ esac
 
 print_usage( )
 {
-	echo "Usage: statuscli ( list | get <platform> <arch> | set <platform> <arch> STATUS )" 1>&2
-	echo "       where STATUS is one of the OSB result states" 1>&2
-	echo "       and platform arch are OSB tokens listed by 'list'" 1>&2
+	echo "Usage: statuscli list [ <status> ]" 1>&2
+	echo "       statuscli get <platform> <arch>" 1>&2
+	echo "       statuscli set <platform> <arch> <status>" 1>&2
+	echo "       where <status> is one of the OSB result states" 1>&2
+	echo "       and <platform> and <arch> are OSB tokens listed by 'list'" 1>&2
 	exit 2
 }
 

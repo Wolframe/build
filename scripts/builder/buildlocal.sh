@@ -42,10 +42,18 @@ if test $PLATFORM = "LINUX"; then
 fi
 
 # force usage of ccache
-CC='ccache gcc'
-export CC
-CXX='ccache g++'
-export CXX
+case $PLATFORM.$LINUX_DIST in
+	LINUX.redhat*)
+		. /etc/profile.d/ccache.sh
+		;;
+	*)
+esac
+echo "PATH is: $PATH"
+TYPE_CC=`type gcc`
+TYPE_CXX=`type g++`
+echo "CC: $TYPE_CC"
+echo "CXX: $TYPE_CXX"
+echo "CCACHE_DIR: $CCACHE_DIR"
 
 # depending on the packaging system we call the correct local build script
 echo "Started local build script.."

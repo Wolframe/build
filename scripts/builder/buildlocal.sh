@@ -88,6 +88,9 @@ case $PLATFORM.$LINUX_DIST in
 		;;
 	
 	LINUX.slackware*)
+		if test "x$ARCH" = "xx86"; then
+			ARCH="i386"
+		fi
 		for file in $HOME/slackbuild/PKGS/x86_64/$PROJECT_PREFIX*.tgz; do
 			upload_file $file
 		done

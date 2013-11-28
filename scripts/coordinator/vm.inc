@@ -54,3 +54,8 @@ stopvm( )
 
 	waitfortermvm "$1" "$2"
 }
+
+nof_running_vms( )
+{
+	RES=`VBoxManage list runningvms | wc -l`
+}

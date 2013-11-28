@@ -41,6 +41,20 @@ if test $PLATFORM = "LINUX"; then
 	echo "  OSB_PLATFORM: $OSB_PLATFORM"
 fi
 
+# force usage of ccache
+case $PLATFORM.$LINUX_DIST in
+	LINUX.redhat*)
+		. /etc/profile.d/ccache.sh
+		;;
+	*)
+esac
+echo "PATH is: $PATH"
+TYPE_CC=`type gcc`
+TYPE_CXX=`type g++`
+echo "CC: $TYPE_CC"
+echo "CXX: $TYPE_CXX"
+echo "CCACHE_DIR: $CCACHE_DIR"
+
 # depending on the packaging system we call the correct local build script
 echo "Started local build script.."
 case $PLATFORM.$LINUX_DIST in

@@ -25,7 +25,7 @@ get_status( )
 get manual_results
 quit
 EOF
-	ftp $FTP_SERVER </tmp/build.$$
+	ftp $FTP_SERVER </tmp/build.$$ >/dev/null
 
 	grep `hostname` manual_results | tr -s ' ' '_' >/tmp/build.$$
 	while read -r _NAME _ARCH _STATUS _VM_NAME _HOST_NAME; do
@@ -52,7 +52,7 @@ set_status( )
 get manual_results
 quit
 EOF
-	ftp $FTP_SERVER </tmp/build.$$
+	ftp $FTP_SERVER </tmp/build.$$ >/dev/null
 
 	_HOST=`hostname`
 	touch /tmp/manual_results.$$
@@ -76,7 +76,7 @@ EOF
 put manual_results
 quit
 EOF
-	ftp $FTP_SERVER </tmp/build.$$
+	ftp $FTP_SERVER </tmp/build.$$ >/dev/null
 
 	rm -f manual_results.in manual_results manual_results.bak
 
@@ -99,7 +99,7 @@ cd $OSB_ARCH
 put $_FILE
 quit
 EOF
-	ftp $FTP_SERVER </tmp/build2.$$
+	ftp $FTP_SERVER </tmp/build2.$$ >/dev/null
 
 	remove_creds
 }

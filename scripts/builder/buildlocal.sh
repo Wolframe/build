@@ -71,6 +71,11 @@ case $PLATFORM.$LINUX_DIST in
 		packaging/slackware/buildlocal.sh >build.log 2>&1
 		RET=$?
 		;;
+	
+	FREEBSD*)
+		packaging/freebsd/buildlocal.sh >build.log 2>&1
+		RET=$?
+		;;
 		
 	*)
 		echo "ERROR: no clue how to build on '$PLATFORM', '$LINUX_DIST'"
@@ -95,6 +100,15 @@ case $PLATFORM.$LINUX_DIST in
 			ARCH="i686"
 		fi
 		for file in $HOME/slackbuild/PKGS/$ARCH/$PROJECT_PREFIX*.tgz; do
+			upload_file $file
+		done
+		;;
+		
+	FREEBSD*)
+		if test "x$ARCH" = "xx86"; then
+			ARCH="i686"
+		fi
+		for file in $HOME/bsdbuild/PKGS/$ARCH/$PROJECT_PREFIX*.tgz; do
 			upload_file $file
 		done
 		;;

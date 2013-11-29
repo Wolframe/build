@@ -1,0 +1,10 @@
+docs
+.htaccess
+data/manual_results
+*~
+xslt/archs.xml
+xslt/platforms.xml
+config.php
+cache/repo.cache
+config/manual_repos
+scripts/master/config

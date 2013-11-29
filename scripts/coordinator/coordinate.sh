@@ -17,11 +17,12 @@ esac
 schedule_tasks( )
 {
 	get_first_status "scheduled"
-	while test "x$OSB_NAME" != "x"; do
+	while test "x$OSB_NAME" != "x" -a $NOF_VMS_RUNNING -lt $MAX_VMS; do
 		echo "Scheduling new builder for $OSB_NAME $OSB_ARCH.."
 		set_status "$OSB_NAME" "$OSB_ARCH" "building"
-		startvm "$OSB_VM_NAME" "$OSB_HOST_NAME"
-		get_next_status $STATUS
+#		startvm "$OSB_VM_NAME" "$OSB_HOST_NAME"
+		get_next_status "scheduled"
+		NOF_VMS_RUNNING=`expr $NOF_VMS_RUNNING + 1`
 	done
 }
 

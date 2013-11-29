@@ -28,14 +28,14 @@ schedule_tasks( )
 
 terminate_tasks( )
 {
-	STATUS=$1
-	FINI_STATUS=`echo $STATUS | tr -d '*'`
-	get_first_status $STATUS
+	TERMINATE_STATUS=$1
+	FINI_STATUS=`echo $TERMINATE_STATUS | tr -d '*'`
+	get_first_status $TERMINATE_STATUS
 	while test "x$OSB_NAME" != "x"; do
 		echo "Terminating builder for $OSB_NAME $OSB_ARCH.."
 		stopvm "$OSB_VM_NAME" "$OSB_HOST_NAME"
 		set_status "$OSB_NAME" "$OSB_ARCH" "$FINI_STATUS"
-		get_next_status $STATUS
+		get_next_status $TERMINATE_STATUS
 	done
 }
 

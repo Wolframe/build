@@ -76,7 +76,12 @@ case $PLATFORM.$LINUX_DIST in
 		packaging/freebsd/buildlocal.sh >build.log 2>&1
 		RET=$?
 		;;
-		
+	
+	NETBSD*)
+		packaging/netbsd/buildlocal.sh >build.log 2>&1
+		RET=$?
+		;;
+			
 	*)
 		echo "ERROR: no clue how to build on '$PLATFORM', '$LINUX_DIST'"
 		;;
@@ -104,7 +109,7 @@ case $PLATFORM.$LINUX_DIST in
 		done
 		;;
 		
-	FREEBSD*)
+	FREEBSD*|NETBSD*)
 		if test "x$ARCH" = "xx86"; then
 			ARCH="i686"
 		fi
@@ -112,7 +117,7 @@ case $PLATFORM.$LINUX_DIST in
 			upload_file $file
 		done
 		;;
-		
+
 	*)
 		echo "ERROR: no clue how to upload artifacts on '$PLATFORM', '$LINUX_DIST'"
 		;;

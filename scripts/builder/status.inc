@@ -16,6 +16,23 @@ remove_creds( )
 	mv -f /tmp/build.$$ $HOME/.netrc
 }
 
+get_hostname( )
+{
+	case $PLATFORM in
+		NETBSD)
+			HOST=`hostname`
+			;;
+
+		LINUX|FREEBSD)
+			HOST=`hostname -f`
+			;;
+
+		*)
+			HOST=`hostname`
+			;;
+	esac
+}
+
 # get current data and status for this builder
 get_status( )
 {
@@ -27,7 +44,8 @@ quit
 EOF
 	ftp $FTP_SERVER </tmp/build.$$ >/dev/null
 
-	grep `hostname -f` manual_results | tr -s ' ' '_' >/tmp/build.$$
+	get_hostname
+	grep $HOST manual_results | tr -s ' ' '_' >/tmp/build.$$
 	while read -r _NAME _ARCH _STATUS _VM_NAME _HOST_NAME; do
 		OSB_NAME=$_NAME
 		OSB_ARCH=$_ARCH
@@ -54,7 +72,7 @@ quit
 EOF
 	ftp $FTP_SERVER </tmp/build.$$ >/dev/null
 
-	_HOST=`hostname -f`
+	get_hostname
 	touch /tmp/manual_results.$$
 	cat manual_results | tr -s ' ' '_' > manual_results.in
 	while read -r _NAME _ARCH _STATUS _VM_NAME _HOST_NAME; do
@@ -63,7 +81,7 @@ EOF
 		__STATUS=$_STATUS
 		__VM_NAME=`echo $_VM_NAME | tr -s '_' ' ' | tr -d \"`
 		__HOST_NAME=$_HOST_NAME
-		if test $__HOST_NAME = $_HOST; then
+		if test $__HOST_NAME = $HOST; then
 			__STATUS=$1
 		fi
 		printf "$__NAME\t$__ARCH\t$__STATUS\t\"$__VM_NAME\"\t$__HOST_NAME\n" >> /tmp/manual_results.$$

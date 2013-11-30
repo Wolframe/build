@@ -26,10 +26,6 @@ get_hostname( )
 		LINUX|FREEBSD)
 			HOST=`hostname -f`
 			;;
-
-		*)
-			HOST=`hostname`
-			;;
 	esac
 }
 

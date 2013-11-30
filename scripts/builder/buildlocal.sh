@@ -14,6 +14,8 @@ esac
 . $base/env.inc
 . $base/status.inc
 
+guess_os
+
 # set pathes on some platforms
 case $PLATFORM.$LINUX_DIST in
 	NETBSD*)

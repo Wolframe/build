@@ -9,7 +9,8 @@ case "$0" in
 		base=`pwd`/`dirname $0`
 		;;
 esac
-                        
+
+. $base/env.inc                        
 . $base/status.inc
 . $base/config
 
@@ -53,6 +54,8 @@ case $# in
 		print_usage
 		;;
 esac
+
+guess_os
 
 case $OP in
 	get)

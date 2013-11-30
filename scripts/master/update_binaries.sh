@@ -67,10 +67,17 @@ for arch in $archs; do
 		fi
 		
 		echo "Getting packages for $platform, $arch"
-		osc -q getbinaries $platform $arch >/dev/null 2>&1
+		if test -d $base/../../data/$platform/$arch; then
+			mkdir binaries
+			cp $base/../../data/$platform/$arch/* binaries/.
+			rm -f binaries/build.log
+		else
+			osc -q getbinaries $platform $arch >/dev/null 2>&1
+		fi
 		mv -fuv binaries/*.rpm $dir 2>/dev/null
 		mv -fuv binaries/*.deb $dir 2>/dev/null
 		mv -fuv binaries/*.pkg.tar.xz $dir 2>/dev/null
+		mv -fuv binaries/*.tgz $dir 2>/dev/null
 		rm -rf binaries 2>/dev/null
 		/sbin/restorecon -Rv $dir >/dev/null 2>&1
 	done

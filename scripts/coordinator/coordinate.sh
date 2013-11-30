@@ -18,7 +18,7 @@ schedule_tasks( )
 {
 	get_first_status "scheduled"
 	while test "x$OSB_NAME" != "x" -a $NOF_VMS_RUNNING -lt $MAX_VMS; do
-		echo "Scheduling new builder for $OSB_NAME $OSB_ARCH.."
+		echo "Scheduling new builder for $OSB_NAME $OSB_ARCH.." >>$LOGFILE
 		set_status "$OSB_NAME" "$OSB_ARCH" "building"
 		startvm "$OSB_VM_NAME" "$OSB_HOST_NAME"
 		get_next_status "scheduled"
@@ -32,15 +32,25 @@ terminate_tasks( )
 	FINI_STATUS=`echo $TERMINATE_STATUS | tr -d '*'`
 	get_first_status $TERMINATE_STATUS
 	while test "x$OSB_NAME" != "x"; do
-		echo "Terminating builder for $OSB_NAME $OSB_ARCH.."
+		echo "Terminating builder for $OSB_NAME $OSB_ARCH.." >>$LOGFILE
 		stopvm "$OSB_VM_NAME" "$OSB_HOST_NAME"
 		set_status "$OSB_NAME" "$OSB_ARCH" "$FINI_STATUS"
 		get_next_status $TERMINATE_STATUS
 	done
 }
 
+LOGFILE=$base/../../logs/coordinator.log
+
+# already running?
+LOCKFILE=$base/../../logs/coordinator.lock
+if test -f $LOCKFILE; then
+	echo "WARNING: A coordinator is already running.. terminating this instance." >>$LOGFILE
+	exit 0
+fi
+touch $LOCKFILE
+
 # first see if we have scheduled entries
-echo "Checking if tasks are scheduled.."
+echo "Checking if tasks are scheduled.." >>$LOGFILE
 get_first_status "scheduled"
 has_tasks=0
 while test "x$OSB_NAME" != "x"; do
@@ -49,7 +59,7 @@ while test "x$OSB_NAME" != "x"; do
 done
 
 if test $has_tasks -eq 0; then
-	echo "No new tasks scheduled."
+	echo "No new tasks scheduled." >>$LOGFILE
 fi
 
 # check for terminated builders, stop the VMs if they are
@@ -62,11 +72,14 @@ terminate_tasks "failed*"
 # are over the limit we can't start more
 nof_running_vms
 NOF_VMS_RUNNING=$RES
-echo "Currently $NOF_VMS_RUNNING builders are running."
+echo "Currently $NOF_VMS_RUNNING builders are running." >>$LOGFILE
 if test $NOF_VMS_RUNNING -ge $MAX_VMS; then
-	echo "All builder slots occupied, cannot start new builders at the moment."
+	echo "All builder slots occupied, cannot start new builders at the moment." >>$LOGFILE
 else
 	schedule_tasks
 fi
+
+# remove lock file
+rm -f $LOCKFILE
 
 exit 0

@@ -22,6 +22,10 @@ case $PLATFORM.$LINUX_DIST in
 		PATH=/usr/pkg/bin:/usr/pkg/sbin:$PATH
 		export PATH
 		;;
+	FREEBSD*)
+		PATH=/usr/local/bin:/usr/local/sbin:$PATH
+		export PATH
+		;;
 	*)
 esac
 

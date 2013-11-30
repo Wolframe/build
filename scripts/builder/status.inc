@@ -54,7 +54,7 @@ quit
 EOF
 	ftp $FTP_SERVER </tmp/build.$$ >/dev/null
 
-	_HOST=`hostname`
+	_HOST=`hostname -f`
 	touch /tmp/manual_results.$$
 	cat manual_results | tr -s ' ' '_' > manual_results.in
 	while read -r _NAME _ARCH _STATUS _VM_NAME _HOST_NAME; do

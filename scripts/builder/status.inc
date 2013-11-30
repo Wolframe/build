@@ -27,7 +27,7 @@ quit
 EOF
 	ftp $FTP_SERVER </tmp/build.$$ >/dev/null
 
-	grep `hostname` manual_results | tr -s ' ' '_' >/tmp/build.$$
+	grep `hostname -f` manual_results | tr -s ' ' '_' >/tmp/build.$$
 	while read -r _NAME _ARCH _STATUS _VM_NAME _HOST_NAME; do
 		OSB_NAME=$_NAME
 		OSB_ARCH=$_ARCH

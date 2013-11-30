@@ -23,6 +23,7 @@ if test "x$OSB_STATUS" != 'xbuilding'; then
 fi
 
 # udpate ourselves
+cd $base
 git pull
 
 # we are building now, indicate status

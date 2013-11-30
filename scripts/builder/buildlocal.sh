@@ -49,6 +49,10 @@ case $PLATFORM.$LINUX_DIST in
 	LINUX.redhat*)
 		. /etc/profile.d/ccache.sh
 		;;
+	
+	NETBSD*)
+		CCACHE_DIR=/root/.ccache
+		export CCACHE_DIR
 	*)
 esac
 echo "PATH is: $PATH"

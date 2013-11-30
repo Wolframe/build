@@ -8,3 +8,5 @@ config.php
 cache/repo.cache
 config/manual_repos
 scripts/master/config
+cache/BINARY_OSC_VERSION
+cache/LOCAL_BUILD_OSC_VERSION

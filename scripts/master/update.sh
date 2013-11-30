@@ -20,6 +20,7 @@ touch $LOCK_FILE
 LOG_FILE=$base/../../logs/update.log
 
 $base/update_metadata.sh 2>&1 >$LOG_FILE
+$base/buildlocal.sh 2>&1 >>$LOG_FILE
 $base/generate_index.sh 2>&1 >>$LOG_FILE
 $base/download_newest_logs.sh 2>&1 >>$LOG_FILE
 $base/generate_index.sh 2>&1 >>$LOG_FILE

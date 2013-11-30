@@ -14,6 +14,15 @@ esac
 . $base/env.inc
 . $base/status.inc
 
+# set pathes on some platforms
+case $PLATFORM.$LINUX_DIST in
+	NETBSD*)
+		PATH=/usr/pkg/bin:/usr/pkg/sbin:$PATH
+		export PATH
+		;;
+	*)
+esac
+
 # first see, if we really have something to do, otherwise we were
 # either awakened by the coordinator and he will shut us down again
 # or the user is doing something manually on the virtual machine
@@ -54,6 +63,7 @@ case $PLATFORM.$LINUX_DIST in
 	NETBSD*)
 		CCACHE_DIR=/root/.ccache
 		export CCACHE_DIR
+		;;
 	*)
 esac
 echo "PATH is: $PATH"

@@ -29,6 +29,9 @@ case $PLATFORM.$LINUX_DIST in
 	*)
 esac
 
+# change to a unique directory!
+cd $base
+
 # first see, if we really have something to do, otherwise we were
 # either awakened by the coordinator and he will shut us down again
 # or the user is doing something manually on the virtual machine
@@ -38,7 +41,6 @@ if test "x$OSB_STATUS" != 'xbuilding'; then
 fi
 
 # udpate ourselves
-cd $base
 git pull
 
 # we are building now, indicate status

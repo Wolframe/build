@@ -23,7 +23,7 @@ case $PLATFORM.$LINUX_DIST in
 		export PATH
 		;;
 	FREEBSD*)
-		PATH=/usr/local/bin:/usr/local/sbin:$PATH
+		PATH=/usr/local/bin:/usr/local/sbin:/usr/sbin:$PATH
 		export PATH
 		;;
 	*)

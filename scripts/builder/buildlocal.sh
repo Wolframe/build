@@ -43,16 +43,6 @@ fi
 # udpate ourselves
 git pull
 
-# we are building now, indicate status
-set_status "building*"
-
-echo "Updating project '$OSC_PROJECT' from git repository.."
-# building always current master, update it
-cd $LOCAL_BUILD_DIR
-git pull
-
-guess_os
-
 echo "Building for:"
 echo "  Architecture: $ARCH"
 echo "  Operating System: $PLATFORM"
@@ -61,6 +51,7 @@ if test $PLATFORM = "LINUX"; then
 	echo "  Distribution: $LINUX_DIST"
 	echo "  OSB_PLATFORM: $OSB_PLATFORM"
 fi
+echo "  OSB status is: $OSB_STATUS (must be building!)"
 
 # force usage of ccache
 case $PLATFORM.$LINUX_DIST in
@@ -80,6 +71,14 @@ TYPE_CXX=`type g++`
 echo "CC: $TYPE_CC"
 echo "CXX: $TYPE_CXX"
 echo "CCACHE_DIR: $CCACHE_DIR"
+
+# we are building now, indicate status
+set_status "building*"
+
+echo "Updating project '$OSC_PROJECT' from git repository.."
+# building always current master, update it
+cd $LOCAL_BUILD_DIR
+git pull
 
 # depending on the packaging system we call the correct local build script
 echo "Started local build script.."

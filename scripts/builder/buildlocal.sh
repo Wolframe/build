@@ -53,6 +53,7 @@ if test $PLATFORM = "LINUX"; then
 fi
 echo "  OSB status is: $OSB_STATUS (must be building!)"
 echo "  Current working dir is: $PWD"
+echo "  PID is: $$"
 
 # force usage of ccache
 case $PLATFORM.$LINUX_DIST in

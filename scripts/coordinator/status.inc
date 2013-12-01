@@ -2,6 +2,17 @@
 # can run non-interactivly
 write_creds( )
 {
+	__count=0
+	while test -f $HOME/.netrc-lock; do
+		sleep 30
+		__count=`expr $__count + 1`
+		if __count -gt 10; then
+			echo "FATAL: unable to lock .netrc! Check manually!" 1>&2
+			exit 1
+		fi
+	done
+	touch $HOME/.netrc-lock
+
 	cat >>$HOME/.netrc <<EOF
 machine $FTP_SERVER login $FTP_USER password $FTP_PASS
 EOF
@@ -14,6 +25,8 @@ remove_creds( )
 {
 	grep -v "machine $FTP_SERVER" < $HOME/.netrc > /tmp/build.$$
 	mv -f /tmp/build.$$ $HOME/.netrc
+
+	rm -f $HOME/.netrc-lock
 }
 
 get_first_status( )

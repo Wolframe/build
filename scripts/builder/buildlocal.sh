@@ -36,13 +36,6 @@ cd $base
 # either awakened by the coordinator and he will shut us down again
 # or the user is doing something manually on the virtual machine
 get_status
-if test "x$OSB_STATUS" != 'xbuilding'; then
-	exit 0
-fi
-
-# udpate ourselves
-git pull
-
 echo "Building for:"
 echo "  Architecture: $ARCH"
 echo "  Operating System: $PLATFORM"
@@ -54,6 +47,13 @@ fi
 echo "  OSB status is: $OSB_STATUS (must be building!)"
 echo "  Current working dir is: $PWD"
 echo "  PID is: $$"
+if test "x$OSB_STATUS" != 'xbuilding'; then
+	exit 0
+fi
+
+# udpate ourselves
+git pull
+
 
 # force usage of ccache
 case $PLATFORM.$LINUX_DIST in

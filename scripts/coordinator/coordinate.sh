@@ -73,10 +73,12 @@ terminate_tasks "failed*"
 nof_running_vms
 NOF_VMS_RUNNING=$RES
 echo "Currently $NOF_VMS_RUNNING builders are running." >>$LOGFILE
-if test $NOF_VMS_RUNNING -ge $MAX_VMS; then
-	echo "All builder slots occupied, cannot start new builders at the moment." >>$LOGFILE
-else
-	schedule_tasks
+if test $has_tasks -eq 1; then
+	if test $NOF_VMS_RUNNING -ge $MAX_VMS; then
+		echo "All builder slots occupied, cannot start new builders at the moment." >>$LOGFILE
+	else
+		schedule_tasks
+	fi
 fi
 
 # remove lock file

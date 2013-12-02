@@ -15,6 +15,7 @@ Licence: <a href="http://www.os-templates.com/template-terms">Website Template L
 
 	#topnav ul{display:none;}
 	form input[type="submit"]{margin-bottom:10px;}
+	#cse-search-box input[type="submit"] { margin-bottom: 0px; }
 
 	.one_half, .one_half.nogutter, 
 	.one_third, .two_third, .one_third.nogutter, .two_third.nogutter, 
@@ -22,8 +23,9 @@ Licence: <a href="http://www.os-templates.com/template-terms">Website Template L
 	.one_fifth, .two_fifth, .three_fifth, .four_fifth, .one_fifth.nogutter, .two_fifth.nogutter, .three_fifth.nogutter, .four_fifth.nogutter, 
 	.one_sixth, .two_sixth, .three_sixth, .four_sixth, .five_sixth, .one_sixth.nogutter, .two_sixth.nogutter, .three_sixth.nogutter, .four_sixth.nogutter, .five_sixth.nogutter{display:block; float:none; width:auto; margin:0 0 5% 0; padding:0;}
 
-	#header hgroup, #header #header-logo, #header #header-contact{display:block; width:100%; float:none; margin:0 0 15px 0; padding:0; text-align:center;}
-	#header #header-contact{margin:30px 0 0 0;}
+	#header hgroup, #header #header-logo,
+	#header #header-contact, #header #header-search{display:block; width:100%; float:none; margin:0 0 15px 0; padding:0; text-align:center;}
+	#header #header-contact, #header #header-search{margin:30px 0 0 0;}
 	#header #header-contact li{display:block; margin:15px 0 0 0; padding:0; border:none;}
 	#header #header-contact li:first-child{margin:0;}
 
@@ -55,15 +57,17 @@ Licence: <a href="http://www.os-templates.com/template-terms">Website Template L
 
 	#topnav ul{display:none;}
 	form input[type="submit"]{margin-bottom:10px;}
+	#cse-search-box input[type="submit"] { margin-bottom: 0px; }
 
-	.one_half, .one_half.nogutter, 
-	.one_third, .two_third, .one_third.nogutter, .two_third.nogutter, 
-	.one_quarter, .two_quarter, .three_quarter, .one_quarter.nogutter, .two_quarter.nogutter, .three_quarter.nogutter, 
-	.one_fifth, .two_fifth, .three_fifth, .four_fifth, .one_fifth.nogutter, .two_fifth.nogutter, .three_fifth.nogutter, .four_fifth.nogutter, 
+	.one_half, .one_half.nogutter,
+	.one_third, .two_third, .one_third.nogutter, .two_third.nogutter,
+	.one_quarter, .two_quarter, .three_quarter, .one_quarter.nogutter, .two_quarter.nogutter, .three_quarter.nogutter,
+	.one_fifth, .two_fifth, .three_fifth, .four_fifth, .one_fifth.nogutter, .two_fifth.nogutter, .three_fifth.nogutter, .four_fifth.nogutter,
 	.one_sixth, .two_sixth, .three_sixth, .four_sixth, .five_sixth, .one_sixth.nogutter, .two_sixth.nogutter, .three_sixth.nogutter, .four_sixth.nogutter, .five_sixth.nogutter{display:block; float:none; width:auto; margin:0 0 5% 0; padding:0;}
 
-	#header hgroup, #header #header-logo, #header #header-contact{display:block; width:100%; float:none; margin:0 0 15px 0; padding:0;}
-	#header #header-contact{margin:30px 0 0 0;}
+	#header hgroup, #header #header-logo,
+	#header #header-contact, #header #header-search{display:block; width:100%; float:none; margin:0 0 15px 0; padding:0;}
+	#header #header-contact, #header #header-search{margin:30px 0 0 0;}
 
 	#sidebar_2 ul.nospace li{display:inline; float:left; width:30%; margin:0 0 0 5%;}
 	#sidebar_2 ul.nospace li:first-child{margin-left:0;}
@@ -91,6 +95,7 @@ Licence: <a href="http://www.os-templates.com/template-terms">Website Template L
 
 	#topnav ul{display:none;}
 	form input[type="submit"]{margin-bottom:10px;}
+	#cse-search-box input[type="submit"] { margin-bottom: 0px; }
 
 	.calltoaction.opt4 div{display:block; float:none; width:100%; margin:30px 0 0 0;}
 	.calltoaction.opt4 div:first-child{margin-top:0; text-align:center;}

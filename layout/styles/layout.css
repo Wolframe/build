@@ -44,12 +44,12 @@ address, article, aside, figcaption, figure, footer, header, hgroup, nav, sectio
 
 div.wrapper, .wrapper100{display:block; width:100%; margin:0; padding:0; text-align:left; word-wrap:break-word;}
 
-.row1, .row1 a{color:#C0BAB6; background-color:#467aa7;}
-.row2{color:#919191; background-color:#2a5a7a; border-bottom:1px solid #333333;}
-.row3{	color:#666666; background-color:#FFFFFF;}
-.row4, .row4 a{color:#919191; background-color:#303030;}
-.row5{color:#666666; background-color:#FFFFFF; border-bottom:1px solid #E5E4E3;}
-.slider_row{color:#919191; background-color:#E8E8E8;}
+.row1, .row1 a { color: #C0BAB6; background-color: #467aa7; }
+.row2 { color: #919191; background-color: #2a5a7a; border-bottom: 1px solid #333333; }
+.row3 { color: #666666; background-color: #FFFFFF; }
+.row4, .row4 a { color: #919191; background-color: #303030; }
+.row5 { color: #666666; background-color: #FFFFFF; border-bottom: 1px solid #E5E4E3; }
+.slider_row { color: #919191; background-color: #E8E8E8; background-image: url(images/brickwall.png) }
 
 /*----------------------------------------------Generalise-------------------------------------*/
 
@@ -67,7 +67,7 @@ nav ul{margin:0; padding:0; list-style:none;}
 
 /*----------------------------------------------Header-------------------------------------*/
 
-#header{padding:30px 0;}
+#header{padding:20px 0;}
 
 #header hgroup{display:block; float:left; width:auto; clear:right;}
 #header hgroup h1, #header hgroup h2{margin:0; font-weight:normal; text-transform:none;}
@@ -84,7 +84,6 @@ nav ul{margin:0; padding:0; list-style:none;}
 #header #header-contact{display:block; float:right; width:auto; clear:right;}
 #header #header-contact ul{margin-top:15px;}
 #header #header-contact li{display:inline; margin:0 0 0 15px; padding:0 0 0 15px; border-left:1px solid #C0BAB6;}
-#header #header-contact li.icons { display:inline; margin:0px; padding:0px; border-left:none; }
 #header #header-contact li:first-child{margin:0; padding:0; border:none;}
 
 /*----------------------------------------------Content Area-------------------------------------*/

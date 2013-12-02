@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
@@ -38,21 +38,14 @@
 			<h1><a href="/index.html">Project Wolframe</a></h1>
 			<h2>The Straight Path to Successful Projects</h2>
 		</div>
-		<div id="header-contact">
-			<ul class="list none">
-				<li><span class="fa fa-envelope"></span> <a href="mailto:contact@wolframe.net">contact@wolframe.net</a></li>
-<!--				<li><span class="fa fa-phone"></span> +xx xxx xxxxxxxxxx</li> -->
-			</ul>
-			<ul class="list none">
-				<li class="icons"><a id="googleplus-bttn" href="http://plus.google.com/116915890857205562872?prsrc=3" rel="publisher" target="_top" style="text-decoration:none;">
-					<span>Google+</span></a></li>
-				<li class="icons"><a  id="linkedin-bttn" href="#" target="_top" style="text-decoration:none;">
-					<span>LinkedIn</span></a></li>
-				<li class="icons"><a id="twitter-bttn" href="http://twitter.com/ProjectWolframe" target="_top" style="text-decoration:none;">
-					<span>twitter</span></a></li>
-				<li class="icons"><a id="rss-bttn" href="#" target="_top" style="text-decoration:none;">
-					<span>rss</span></a></li>
-			</ul>
+		<div id="header-search">
+			<form id="cse-search-box" action="http://www.wolframe.org/gsearch.html">
+				<input type="hidden" name="cx" value="007231504736047898702:wrnjvfljzvu" />
+				<input type="hidden" name="ie" value="UTF-8" />
+				<input type="text" name="q" size="31" />
+<!--				<input type="submit" name="sa" value="&#xf002;" /> -->
+				<input type="submit" name="sa" class="search-bttn" value="" />
+			</form>
 		</div>
 	</header>
 </div>
@@ -63,9 +56,6 @@
 		<ul class="clear">
 <!-- BEGIN MENU -->
 			<li><a href="/index.html" title="Home">Home</a></li>
-<!--
-			<li><a href="/solutions.html" title="Solutions">Solutions</a></li>
--->
 			<li><a href="/downloads.html" title="Downloads">Downloads</a></li>
 			<li><a href="/documentation.html" title="Documentation">Documentation</a></li>
 			<li><a class="drop" href="/support.html" title="Support">Support</a>
@@ -81,6 +71,7 @@
 				</ul>
 			</li>
 			<li class="last-child"><a href="/contact.html" title="Contact Us">Contact Us</a></li>
+<!-- END MENU -->
 		</ul>
 	</nav>
 </div>

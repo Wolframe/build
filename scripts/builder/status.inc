@@ -1,10 +1,25 @@
+# seeding a pseudo-random generator
+srand( )
+{
+	__RANDOM_SEED=`( echo $$ ; w ; date ) | cksum | cut -f1 -d" "`
+}
+
+random( )
+{
+	N=$1
+	F=$2
+	RANDOM=`expr \( $__RANDOM_SEED % $N \) + $F`
+	__RANDOM_SEED=`expr \( $__RANDOM_SEED \* 9301 + 4929 \) % 233280`
+}
+
 # create a .netrc file containing the credentials, so that 'ftp'
 # can run non-interactivly
 write_creds( )
 {
 	__count=0
 	while test -f $HOME/.netrc-lock; do
-		sleep 30
+		random 10 20
+		sleep $RANDOM
 		__count=`expr $__count + 1`
 		if test $__count -gt 10; then
 			echo "FATAL: unable to lock .netrc! Check manually!" 1>&2

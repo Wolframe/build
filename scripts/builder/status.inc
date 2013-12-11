@@ -17,6 +17,8 @@ random( )
 write_creds( )
 {
 	__count=0
+	random 30 1
+	sleep $RANDOM
 	while test -f $HOME/.netrc-lock; do
 		random 10 20
 		sleep $RANDOM

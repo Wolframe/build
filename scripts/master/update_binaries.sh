@@ -70,7 +70,6 @@ for arch in $archs; do
 		if test -d $base/../../data/$platform/$arch; then
 			mkdir binaries
 			mv -f $base/../../data/$platform/$arch/* binaries/.
-			rm -f binaries/build.log
 		else
 			osc -q getbinaries $platform $arch >/dev/null 2>&1
 		fi

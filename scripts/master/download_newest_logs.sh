@@ -75,12 +75,13 @@ if test $WANTED_REVISION = $OSC_REVISION; then
 			STATUS=`hget states ${arch}_${platform}`
 			case $STATUS in
 				failed|succeeded)
+					MANUAL_BUILD_LOG_FILE=$base/../../data/$platform/$arch/build.log
 					if test ! -f $LOG_FILE; then
 						echo "Getting build log for $WANTED_REVISION, $arch, $platform.."
-						MANUAL_BUILD_LOG_FILE=$base/../../data/$platform/$arch/build.log
 						osc buildlog $platform $arch > $LOG_FILE
 					fi
 					if test -f $MANUAL_BUILD_LOG_FILE; then
+						echo "Getting local build log for $WANTED_REVISION, $arch, $platform.."
 						mv -f $MANUAL_BUILD_LOG_FILE $LOG_FILE
 					fi
 					;;

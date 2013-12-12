@@ -22,7 +22,7 @@ global_unlock( )
 write_creds( )
 {
 	__count=0
-	while test -f /root/.netrc-lock; do
+	while test -f $HOME/.netrc-lock; do
 		sleep 30
 		__count=`expr $__count + 1`
 		if test $__count -gt 10; then
@@ -30,22 +30,22 @@ write_creds( )
 			exit 1
 		fi
 	done
-	touch /root/.netrc-lock
+	touch $HOME/.netrc-lock
 
-	cat >>/root/.netrc <<EOF
+	cat >>$HOME/.netrc <<EOF
 machine $FTP_SERVER login $FTP_USER password $FTP_PASS
 EOF
-	chmod 0600 /root/.netrc
+	chmod 0600 $HOME/.netrc
 }
 
 # restore .netrc file to the former state
 # TODO: parallel runs and locking!
 remove_creds( )
 {
-	grep -v "machine $FTP_SERVER" < /root/.netrc > /tmp/build.$$
-	mv -f /tmp/build.$$ /root/.netrc
+	grep -v "machine $FTP_SERVER" < $HOME/.netrc > /tmp/build.$$
+	mv -f /tmp/build.$$ $HOME/.netrc
 
-	rm -f /root/.netrc-lock
+	rm -f $HOME/.netrc-lock
 }
 
 get_hostname( )

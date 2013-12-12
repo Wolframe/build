@@ -69,7 +69,7 @@ for arch in $archs; do
 		echo "Getting packages for $platform, $arch"
 		if test -d $base/../../data/$platform/$arch; then
 			mkdir binaries
-			cp $base/../../data/$platform/$arch/* binaries/.
+			mv -f $base/../../data/$platform/$arch/* binaries/.
 			rm -f binaries/build.log
 		else
 			osc -q getbinaries $platform $arch >/dev/null 2>&1

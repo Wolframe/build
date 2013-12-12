@@ -79,7 +79,7 @@ if test $WANTED_REVISION = $OSC_REVISION; then
 						echo "Getting build log for $WANTED_REVISION, $arch, $platform.."
 						MANUAL_BUILD_LOG_FILE=$base/../../data/$platform/$arch/build.log
 						if test -s $MANUAL_BUILD_LOG_FILE; then
-							cp $MANUAL_BUILD_LOG_FILE $LOG_FILE
+							mv -f $MANUAL_BUILD_LOG_FILE $LOG_FILE
 						else
 							osc buildlog $platform $arch > $LOG_FILE
 						fi

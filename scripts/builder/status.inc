@@ -1,8 +1,8 @@
-# global lock file, only one build per VM at the moment!
+# global lock directory, atomar test-and-set in shell
 global_lock( )
 {
 	__count=0
-	while test -f /root/.build-lock; do
+	while mkdir /root/.build-lock; do
 		sleep 30
 		__count=`expr $__count + 1`
 		if test $__count -gt 10; then
@@ -10,12 +10,11 @@ global_lock( )
 			exit 1
 		fi
 	done
-	touch /root/.build-lock
 }
 
 global_unlock( )
 {
-	rm -f /root/.build-lock
+	rmdir /root/.build-lock
 }
 
 # create a .netrc file containing the credentials, so that 'ftp'

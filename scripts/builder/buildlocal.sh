@@ -14,7 +14,6 @@ esac
 . $base/env.inc
 . $base/status.inc
 
-srand
 guess_os
 
 # set pathes on some platforms

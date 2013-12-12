@@ -14,8 +14,6 @@ esac
 . $base/status.inc
 . $base/config
 
-srand
-
 print_usage( )
 {
 	echo "Usage: statuscli ( get | set STATUS | upload <file> )" 1>&2

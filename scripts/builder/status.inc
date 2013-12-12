@@ -1,3 +1,23 @@
+# global lock file, only one build per VM at the moment!
+global_lock( )
+{
+	__count=0
+	while test -f $HOME/.build-lock; do
+		sleep 30
+		__count=`expr $__count + 1`
+		if test $__count -gt 10; then
+			echo "FATAL: unable to lock '$HOME/.build-lock'! Check manually!" 1>&2
+			exit 1
+		fi
+	done
+	touch $HOME/.build-lock
+}
+
+global_unlock( )
+{
+	rm -f $HOME/.build-lock
+}
+
 # create a .netrc file containing the credentials, so that 'ftp'
 # can run non-interactivly
 write_creds( )

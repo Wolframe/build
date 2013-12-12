@@ -2,7 +2,7 @@
 global_lock( )
 {
 	__count=0
-	while mkdir /root/.build-lock; do
+	while ! mkdir /root/.build-lock; do
 		sleep 30
 		__count=`expr $__count + 1`
 		if test $__count -gt 10; then

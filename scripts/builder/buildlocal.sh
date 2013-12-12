@@ -14,6 +14,8 @@ esac
 . $base/env.inc
 . $base/status.inc
 
+global_lock
+
 guess_os
 
 # set pathes on some platforms
@@ -48,6 +50,7 @@ echo "  OSB status is: $OSB_STATUS (must be building!)"
 echo "  Current working dir is: $PWD"
 echo "  PID is: $$"
 if test "x$OSB_STATUS" != 'xbuilding'; then
+	global_unlock
 	exit 0
 fi
 
@@ -119,7 +122,7 @@ case $PLATFORM.$LINUX_DIST in
 		if test "x$ARCH" = "xx86"; then
 			ARCH="i386"
 		fi
-		for file in $HOME/rpmbuild/RPMS/$ARCH/$PROJECT_PREFIX*.rpm; do
+		for file in /root/rpmbuild/RPMS/$ARCH/$PROJECT_PREFIX*.rpm; do
 			upload_file $file
 		done
 		;;
@@ -128,7 +131,7 @@ case $PLATFORM.$LINUX_DIST in
 		if test "x$ARCH" = "xx86"; then
 			ARCH="i686"
 		fi
-		for file in $HOME/slackbuild/PKGS/$ARCH/$PROJECT_PREFIX*.tgz; do
+		for file in /root/slackbuild/PKGS/$ARCH/$PROJECT_PREFIX*.tgz; do
 			upload_file $file
 		done
 		;;
@@ -137,7 +140,7 @@ case $PLATFORM.$LINUX_DIST in
 		if test "x$ARCH" = "xx86"; then
 			ARCH="i686"
 		fi
-		for file in $HOME/bsdbuild/PKGS/$ARCH/$PROJECT_PREFIX*.tgz; do
+		for file in /root/bsdbuild/PKGS/$ARCH/$PROJECT_PREFIX*.tgz; do
 			upload_file $file
 		done
 		;;
@@ -157,3 +160,5 @@ else
 	set_status "failed*"
 	echo "Done (failed)."
 fi
+
+global_unlock

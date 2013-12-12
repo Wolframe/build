@@ -2,20 +2,20 @@
 global_lock( )
 {
 	__count=0
-	while test -f $HOME/.build-lock; do
+	while test -f /root/.build-lock; do
 		sleep 30
 		__count=`expr $__count + 1`
 		if test $__count -gt 10; then
-			echo "FATAL: unable to lock '$HOME/.build-lock'! Check manually!" 1>&2
+			echo "FATAL: unable to lock '/root/.build-lock'! Check manually!" 1>&2
 			exit 1
 		fi
 	done
-	touch $HOME/.build-lock
+	touch /root/.build-lock
 }
 
 global_unlock( )
 {
-	rm -f $HOME/.build-lock
+	rm -f /root/.build-lock
 }
 
 # create a .netrc file containing the credentials, so that 'ftp'
@@ -23,7 +23,7 @@ global_unlock( )
 write_creds( )
 {
 	__count=0
-	while test -f $HOME/.netrc-lock; do
+	while test -f /root/.netrc-lock; do
 		sleep 30
 		__count=`expr $__count + 1`
 		if test $__count -gt 10; then
@@ -31,22 +31,22 @@ write_creds( )
 			exit 1
 		fi
 	done
-	touch $HOME/.netrc-lock
+	touch /root/.netrc-lock
 
-	cat >>$HOME/.netrc <<EOF
+	cat >>/root/.netrc <<EOF
 machine $FTP_SERVER login $FTP_USER password $FTP_PASS
 EOF
-	chmod 0600 $HOME/.netrc
+	chmod 0600 /root/.netrc
 }
 
 # restore .netrc file to the former state
 # TODO: parallel runs and locking!
 remove_creds( )
 {
-	grep -v "machine $FTP_SERVER" < $HOME/.netrc > /tmp/build.$$
-	mv -f /tmp/build.$$ $HOME/.netrc
+	grep -v "machine $FTP_SERVER" < /root/.netrc > /tmp/build.$$
+	mv -f /tmp/build.$$ /root/.netrc
 
-	rm -f $HOME/.netrc-lock
+	rm -f /root/.netrc-lock
 }
 
 get_hostname( )

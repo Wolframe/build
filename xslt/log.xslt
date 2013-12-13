@@ -94,8 +94,8 @@
       </xsl:when>
       <xsl:otherwise>
 <script language="javascript" type="text/JavaScript">
-	maxPos = 500;
-	pos = 500;
+	maxPos = <xsl:value-of select="/page/@fileSize"/>;
+	pos = <xsl:value-of select="/page/@fileSize"/> - 20;
 
 	function createRequest() {
 		var request = null;
@@ -123,7 +123,7 @@
 	var request = createRequest( );
 
 	function scrollTo( pos ) {
-		if( pos &lt; 30 ) {
+		if( pos &lt; 20 ) {
 			document.getElementById( "watchFirst" ).disabled = true; 
 			document.getElementById( "watchPrev" ).disabled = true; 
 		} else {
@@ -131,7 +131,7 @@
 			document.getElementById( "watchPrev" ).disabled = false; 
 		}
 
-		if( pos &gt; maxPos - 30 ) {
+		if( pos &gt; maxPos - 20 ) {
 			document.getElementById( "watchNext" ).disabled = true; 
 			document.getElementById( "watchLast" ).disabled = true; 
 		} else {
@@ -162,7 +162,7 @@
 	}
 
 	function watchPrev( ) {
-		pos -= 30;
+		pos -= 20;
 		if( pos &lt; 1 ) {
 			pos = 1;
 		}
@@ -170,9 +170,9 @@
 	}
 
 	function watchNext( ) {
-		pos += 30;
-		if( pos &gt; maxPos - 30 ) {
-			pos = maxPos - 30;
+		pos += 20;
+		if( pos &gt; maxPos - 20 ) {
+			pos = maxPos - 20;
 		}
 		scrollTo( pos );
 	}

@@ -50,8 +50,16 @@ try
 // parse URL parameters, TODO: map with XSLT back to requests
 	$uri = $_SERVER["PATH_INFO"];
 	$file = "docs/" . $uri;
+	$size = -1;
 	
 	$doc = file_get_contents( $file );
+	if( strcmp( substr( $file, strlen( $file ) - 7 ), "log.xml" ) === 0 ) {
+		$logfile = substr( $file, 0, strlen( $file ) - 7 ) . "log.txt";
+		$size = intval( exec( "wc -l '$logfile'" ) );
+		error_log( "SIZE: " . $size . " " . $logfile );
+	} else {
+		$size = filesize( $file );
+	}
 	
 	if( $doc == FALSE )
 	{
@@ -63,7 +71,7 @@ try
 		$parts = explode( ".", end($dirs) );
 		$xsltFile = $parts[0] . '.xslt';
 		
-		$xmlDoc = transformData( $doc );
+		$xmlDoc = transformData( $doc, $size );
 		
 		echo render( $xmlDoc, $xsltFile );
 	}
@@ -73,7 +81,7 @@ catch ( \Exception $e)
 	$xmlOrig = "<error>" . $e->getMessage( ) . "</error>";
 	$xmlOrig .= "<trace>" . $e->getTraceAsString( ) . "</trace>";
 	
-	$xmlDoc = transformData( $xmlOrig );
+	$xmlDoc = transformData( $xmlOrig, 0 );
 
 	render( $xmlDoc, "error.xslt" );
 }
@@ -83,7 +91,7 @@ catch ( \Exception $e)
 // - variables
 // - state
 // - the page frame
-function transformData( $xmlOrig )
+function transformData( $xmlOrig, $fileSize )
 {
 	global $BASE_URL;
 	global $SCM_BASE_URL;
@@ -107,6 +115,7 @@ function transformData( $xmlOrig )
 	$root->setAttribute( 'browser', $browser );
 	$root->setAttribute( 'scmBaseUrl', $SCM_BASE_URL );
 	$root->setAttribute( 'project', $PROJECT );
+	$root->setAttribute( 'fileSize', $fileSize );
 	$dom->appendChild( $root );
 	$f = $dom->createDocumentFragment( );
 	$f->appendXML( $xmlOrig );

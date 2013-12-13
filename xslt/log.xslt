@@ -94,8 +94,8 @@
       </xsl:when>
       <xsl:otherwise>
 <script language="javascript" type="text/JavaScript">
-	maxPos = <xsl:value-of select="/page/@fileSize"/>;
-	pos = <xsl:value-of select="/page/@fileSize"/> - 20;
+	var maxPos = <xsl:value-of select="/page/@fileSize"/>;
+	var pos = <xsl:value-of select="/page/@fileSize"/> - 20;
 
 	function createRequest() {
 		var request = null;
@@ -159,6 +159,7 @@
 	function watchFirst( ) {
 		pos = 1;
 		scrollTo( pos );
+		document.getElementById( "watchSlider" ).value = pos;
 	}
 
 	function watchPrev( ) {
@@ -167,6 +168,7 @@
 			pos = 1;
 		}
 		scrollTo( pos );
+		document.getElementById( "watchSlider" ).value = pos;
 	}
 
 	function watchNext( ) {
@@ -175,10 +177,17 @@
 			pos = maxPos - 20;
 		}
 		scrollTo( pos );
+		document.getElementById( "watchSlider" ).value = pos;
 	}
 
 	function watchLast( ) {
 		pos = maxPos;
+		scrollTo( pos );
+		document.getElementById( "watchSlider" ).value = pos;
+	}
+
+	function updateSlider( value ) {
+		pos = value;
 		scrollTo( pos );
 	}
 
@@ -190,9 +199,25 @@
 				&#160;
                                 <input type="button" style="width:40px; 0px" id="watchPrev" value="&lt;" onClick="watchPrev( );"/>
 				&#160;
+                                  <xsl:element name="input">
+					<xsl:attribute name="type">range</xsl:attribute>
+					<xsl:attribute name="type">range</xsl:attribute>
+					<xsl:attribute name="id">watchSlider</xsl:attribute>
+					<xsl:attribute name="min">1</xsl:attribute>
+					<xsl:attribute name="step">20</xsl:attribute>
+					<xsl:attribute name="max">
+						<xsl:value-of select="/page/@fileSize"/>
+					</xsl:attribute>
+					<xsl:attribute name="value">
+						<xsl:value-of select="/page/@fileSize"/>
+					</xsl:attribute>
+					<xsl:attribute name="onChange">updateSlider( this.value );</xsl:attribute>
+                                  </xsl:element>
+				&#160;
                                 <input type="button" style="width:40px; 0px" id="watchNext" value="&gt;" disabled="disabled" onClick="watchNext( );"/>
 				&#160;
                                 <input type="button" style="width:40px; 0px" id="watchLast" value="&gt;&gt;" disabled="disabled" onClick="watchLast( );"/>
+				&#160;
                         </td>
         </tr></table>
         <div class="description" id="log" style="width:100%; height:90%; overflow:auto;">

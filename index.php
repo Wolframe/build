@@ -56,7 +56,6 @@ try
 	if( strcmp( substr( $file, strlen( $file ) - 7 ), "log.xml" ) === 0 ) {
 		$logfile = substr( $file, 0, strlen( $file ) - 7 ) . "log.txt";
 		$size = intval( exec( "wc -l '$logfile'" ) );
-		error_log( "SIZE: " . $size . " " . $logfile );
 	} else {
 		$size = filesize( $file );
 	}

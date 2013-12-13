@@ -100,8 +100,10 @@ function transformData( $xmlOrig )
 	if( !$urlRewrite ) {
 		$self .= 'index.php/';
 	}
+	$absoluteSelf = ($_SERVER['HTTPS'] ? "https://" : "http://") . $_SERVER['HTTP_HOST'] . $self;
 	$root->setAttribute( 'base', $base );
 	$root->setAttribute( 'self', $self );
+	$root->setAttribute( 'absoluteSelf', $absoluteSelf );
 	$root->setAttribute( 'browser', $browser );
 	$root->setAttribute( 'scmBaseUrl', $SCM_BASE_URL );
 	$root->setAttribute( 'project', $PROJECT );

@@ -11,6 +11,6 @@ $cmd = "sed -n -e $pos," . ( $pos + 20 ) . "p -e " . ( $pos + 21 ) . "q < $local
 exec( $cmd, $output );
 $n = 0;
 foreach( $output as $line ) {
-  print "[" . ( $pos + $n ) . "] " . $line . "\n";
+  print $line . "\n";
   $n++;
 }

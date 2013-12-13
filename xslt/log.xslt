@@ -163,7 +163,7 @@
 	}
 
 	function watchPrev( ) {
-		pos -= 20;
+		pos = pos - 20;
 		if( pos &lt; 1 ) {
 			pos = 1;
 		}
@@ -172,7 +172,7 @@
 	}
 
 	function watchNext( ) {
-		pos += 20;
+		pos = pos + 20;
 		if( pos &gt; maxPos - 20 ) {
 			pos = maxPos - 20;
 		}
@@ -187,6 +187,9 @@
 	}
 
 	function updateSlider( value ) {
+		if( pos == value ) {
+			return;
+		}
 		pos = value;
 		scrollTo( pos );
 	}

@@ -203,6 +203,7 @@
                                 <input type="button" style="width:40px; 0px" id="watchPrev" value="&lt;" onClick="watchPrev( );"/>
 				&#160;
                                   <xsl:element name="input">
+					<xsl:attribute name="style">width: 60%</xsl:attribute>
 					<xsl:attribute name="type">range</xsl:attribute>
 					<xsl:attribute name="id">watchSlider</xsl:attribute>
 					<xsl:attribute name="min">1</xsl:attribute>

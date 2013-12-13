@@ -1,9 +1,13 @@
 <?php
 
+require 'config.php';
+
 $file = $_GET["file"];
 $pos = $_GET["pos"];
 
-$cmd = "sed -n -e $pos," . ( $pos + 20 ) . "p -e " . ( $pos + 21 ) . "q < ../../../$file";
+$localFile = substr( $file, strlen( $BASE_URL ) );
+
+$cmd = "sed -n -e $pos," . ( $pos + 20 ) . "p -e " . ( $pos + 21 ) . "q < $localFile";
 exec( $cmd, $output );
 $n = 0;
 foreach( $output as $line ) {

@@ -204,7 +204,6 @@
 				&#160;
                                   <xsl:element name="input">
 					<xsl:attribute name="type">range</xsl:attribute>
-					<xsl:attribute name="type">range</xsl:attribute>
 					<xsl:attribute name="id">watchSlider</xsl:attribute>
 					<xsl:attribute name="min">1</xsl:attribute>
 					<xsl:attribute name="step">20</xsl:attribute>

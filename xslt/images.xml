@@ -42,6 +42,11 @@
     <alt>Fedora 19</alt>
   </image>
   <image>
+    <src>Fedora_20</src>
+    <url>fedora.png</url>
+    <alt>Fedora 20</alt>
+  </image>
+  <image>
     <src>FreeBSD_8</src>
     <url>freebsd.png</url>
     <alt>FreeBSD 8</alt>

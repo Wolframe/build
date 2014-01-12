@@ -1,2 +1,6 @@
 - TSV state of local systems, use XSLT with TSV see:
   http://ajhaupt.blogspot.ch/2013/02/how-to-xml-ify-tab-separated-text-file.html
+- Server returned an error: HTTP Error 404: project has no repository 'Slackware_14'
+  project has no repository 'Slackware_14'
+  => don't generate silly requests via OSC for manual local builds
+

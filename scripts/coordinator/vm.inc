@@ -25,7 +25,7 @@ waitforreadyvm( )
 	VBoxManage list runningvms | grep "$1" 2>&1 >/dev/null
 	RET=$?
 	until [ $RET -eq 0 ]; do
-		VBoxManage list runningvms | grep "$1" 2>&1 >/dev/null
+		VBoxManage list runningvms | grep "\"$1\"" 2>&1 >/dev/null
 		RET=$?
 		sleep 5
 	done
@@ -42,7 +42,7 @@ waitfortermvm( )
 	VBoxManage list runningvms | grep "$1" 2>&1 >/dev/null
 	RET=$?
 	until [ $RET -eq 1 ]; do
-		VBoxManage list runningvms | grep "$1" 2>&1 >/dev/null
+		VBoxManage list runningvms | grep "\"$1\"" 2>&1 >/dev/null
 		RET=$?
 		sleep 5
 	done

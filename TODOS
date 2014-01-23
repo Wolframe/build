@@ -1,5 +1,3 @@
-- VMCli is not reliable shutting down virtual machines, maube having a poweroff
-  in the builder script is the safer way?
 - TSV state of local systems, use XSLT with TSV see:
   http://ajhaupt.blogspot.ch/2013/02/how-to-xml-ify-tab-separated-text-file.html
 - Server returned an error: HTTP Error 404: project has no repository 'Slackware_14'

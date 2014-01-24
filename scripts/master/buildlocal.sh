@@ -24,6 +24,11 @@ schedule_tasks( )
 	done
 }
 
+if test $DISABLE_LOCAL_BUILDS -eq 1; then
+	echo "Local builds disabled."
+	exit 0
+fi
+
 cd $OSC_HOME/$OSC_PROJECT
 osc up
 OSC_REVISION=`osc info | grep Revision | cut -f 2 -d ' '`

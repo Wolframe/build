@@ -6,7 +6,7 @@ write_creds( )
 	while test -f $HOME/.netrc-lock; do
 		sleep 30
 		__count=`expr $__count + 1`
-		if __count -gt 10; then
+		if test $__count -gt 10; then
 			echo "FATAL: unable to lock .netrc! Check manually!" 1>&2
 			exit 1
 		fi

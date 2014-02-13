@@ -33,6 +33,11 @@ cd $OSC_HOME/$OSC_PROJECT
 osc up
 OSC_REVISION=`osc info | grep Revision | cut -f 2 -d ' '`
 
+if test "x$OSC_REVISION" = "x"; then
+	echo "OSC revision cannot be determined. Check network or OSC workspace for errors!" 1>&2
+	exit 1
+fi
+
 LOCAL_BUILD_OSC_VERSION_FILE=$CACHE_DIR/LOCAL_BUILD_OSC_VERSION
 
 if test -f $LOCAL_BUILD_OSC_VERSION_FILE; then

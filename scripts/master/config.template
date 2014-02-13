@@ -24,3 +24,6 @@ DOWNLOAD_DIR=/var/www/www.wolframe.ch/packages
 
 # how manu build results should always be visible
 MAX_BUILD_RESULTS_TO_SHOW=10
+
+# no local builds (for instance we want to fix things on OBS first)
+DISABLE_LOCAL_BUILDS=0

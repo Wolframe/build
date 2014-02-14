@@ -3,4 +3,9 @@
 - Server returned an error: HTTP Error 404: project has no repository 'Slackware_14'
   project has no repository 'Slackware_14'
   => don't generate silly requests via OSC for manual local builds
+- execute some other command along the build, for example:
+  - update build workspaces
+  - relocate a workspace
+  - clean .ccache (because the softare change substantially)
+
 

@@ -7,5 +7,5 @@
   - update build workspaces
   - relocate a workspace
   - clean .ccache (because the softare change substantially)
-
-
+- disabling local builds must result in a "don't know' or 'disabled'
+  state, not in the last state in manual_results

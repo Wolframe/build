@@ -72,7 +72,7 @@
                   <xsl:when test="$orig_status='finished*'">run</xsl:when>
                   <xsl:when test="$orig_status='unresolvable'">fail</xsl:when>
                   <xsl:when test="$orig_status='disabled'">disa</xsl:when>
-                  <xsl:when test="$orig_status='skip'">disa</xsl:when>
+                  <xsl:when test="$orig_status='skip'">skip</xsl:when>
                   <xsl:otherwise>??</xsl:otherwise>
                 </xsl:choose>
               </xsl:variable>
@@ -91,6 +91,10 @@
                   <xsl:when test="$status='disa'">
                     <xsl:attribute name="class">status_<xsl:value-of select="$status"/></xsl:attribute>
                     --
+                  </xsl:when>
+                  <xsl:when test="$status='skip'">
+                    <xsl:attribute name="class">status_<xsl:value-of select="$status"/></xsl:attribute>
+                    n/a
                   </xsl:when>
                   <xsl:otherwise>
                     <xsl:attribute name="class">status_run</xsl:attribute>

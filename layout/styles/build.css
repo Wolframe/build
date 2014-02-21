@@ -41,13 +41,19 @@
 
 .status_disa
 {
-	color: darkgrey;
+	color: lightgrey;
 	text-align: center;
 }
 
 .status_run
 {
 	 background-color: yellow;
+	 text-align: center;
+}
+
+.status_skip
+{
+	 background-color: lightgrey;
 	 text-align: center;
 }
 

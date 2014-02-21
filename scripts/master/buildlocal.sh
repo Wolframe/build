@@ -24,8 +24,21 @@ schedule_tasks( )
 	done
 }
 
+skip_tasks( )
+{
+	SCHEDULE_STATUS=$1
+	get_first_status $SCHEDULE_STATUS
+	while test "x$OSB_NAME" != "x"; do
+		echo "Disabling builds for platform '$OSB_NAME' arch '$OSB_ARCH'."
+		set_status "$OSB_NAME" "$OSB_ARCH" "skip"
+		get_next_status $SCHEDULE_STATUS
+	done
+}
+
 if test $DISABLE_LOCAL_BUILDS -eq 1; then
 	echo "Local builds disabled."
+	skip_tasks "succeeded"
+	skip_tasks "failed"
 	exit 0
 fi
 
@@ -76,9 +89,10 @@ if test $schedule -eq 0; then
 	exit
 fi
 
-# turn on scheduling on all non-disabled platforms
+# turn on scheduling on all not-disabled platforms
 schedule_tasks "succeeded"
 schedule_tasks "failed"
+schedule_tasks "skip"
 
 echo "$OSC_REVISION" > $LOCAL_BUILD_OSC_VERSION_FILE
 

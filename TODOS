@@ -14,3 +14,5 @@
 - more robust git update procedure, updating shell scripts while they are executing
   surely breaks the running script! have a separate git_update.sh scripts which is
   kept fairly simple and doesn't change.
+- allow platform,arch pairs (for instance (Arch_Extra,arm6l) or (Solaris_10,SPARC)).
+  Currently all platforms have the same archs.

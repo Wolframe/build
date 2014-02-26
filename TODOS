@@ -7,3 +7,10 @@
   - update build workspaces
   - relocate a workspace
   - clean .ccache (because the softare change substantially)
+- more robust lock file cleanup:
+  - on startup of builder check if .netrc-lock or .global-lock file/dir ist around
+    and how old they are. Check if other builders are still running, if not, wipe
+    the locks
+- more robust git update procedure, updating shell scripts while they are executing
+  surely breaks the running script! have a separate git_update.sh scripts which is
+  kept fairly simple and doesn't change.

@@ -138,6 +138,8 @@ guess_os( )
 				;;
 		sun4u)		ARCH=sun4u
 				;;
+		armv6l)		ARCH=armv6l
+				;;
 
 		*)		ARCH=UNKNOWN
 				echo "Unknown architecture '$UNAME_MACHINE'"

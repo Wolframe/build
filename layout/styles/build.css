@@ -27,14 +27,14 @@
 
 .status_fail
 {
-	background-color: red;
+	background-color: #CC3333;
 	color: white;
 	text-align: center;
 }
 
 .status_ok
 {
-	background-color: green;
+	background-color: #339933;
 	color: white;
 	text-align: center;
 }
@@ -47,7 +47,7 @@
 
 .status_run
 {
-	 background-color: yellow;
+	 background-color: #FFFF99;
 	 text-align: center;
 }
 

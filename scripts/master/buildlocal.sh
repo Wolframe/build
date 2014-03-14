@@ -94,6 +94,10 @@ schedule_tasks "succeeded"
 schedule_tasks "failed"
 schedule_tasks "skip"
 
+# remember current OSC revision we are building
 echo "$OSC_REVISION" > $LOCAL_BUILD_OSC_VERSION_FILE
 
+# remember git revision we are building from
+cp $OSC_HOME/$OSC_PROJECT/GIT_VERSION $WEB_ROOT/data
+ 
 echo "Done."

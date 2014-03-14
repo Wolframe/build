@@ -6,10 +6,11 @@
 - execute some other command along the build, for example:
   - update build workspaces
   - relocate a workspace
-  - clean .ccache (because the softare change substantially)
+  - clean .ccache (because the software change substantially)
 - more robust lock file cleanup:
   - on startup of builder check if .netrc-lock or .global-lock file/dir ist around
     and how old they are. Check if other builders are still running, if not, wipe
     the locks
 - allow platform,arch pairs (for instance (Arch_Extra,arm6l) or (Solaris_10,SPARC)).
   Currently all platforms have the same archs.
+- add a filter for logviews matching patterns (sed)

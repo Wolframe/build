@@ -54,9 +54,18 @@ if test "x$OSB_STATUS" != 'xbuilding'; then
 	exit 0
 fi
 
-# udpate ourselves
-git pull
-
+# check if we have to update ourselves, restart
+# oursevles if we update (sh is picky when the
+# underlying source file of a running script is
+# changed at runtime!)
+REMOTE_SHA=`git ls-remote origin -h refs/heads/master | cut -f 1`
+OUR_SHA=`git rev-list HEAD | head -n 1`
+echo "We are at revision $OUR_SHA"
+echo "Remote revision is $REMOTE_SHA"
+if test "x$OUR_SHA" = "x$REMOTE_SHA"; then
+	git pull
+	$base/$(basename $0) && exit
+fi
 
 # force usage of ccache
 case $PLATFORM.$LINUX_DIST in

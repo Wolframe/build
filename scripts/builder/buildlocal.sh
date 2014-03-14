@@ -63,8 +63,8 @@ OUR_SHA=`git rev-list HEAD | head -n 1`
 echo "We are at revision $OUR_SHA"
 echo "Remote revision is $REMOTE_SHA"
 if test "x$OUR_SHA" = "x$REMOTE_SHA"; then
-	git pull
-	$base/$(basename $0) && exit
+	global_unlock
+	git pull && $base/$(basename $0) && exit
 fi
 
 # force usage of ccache

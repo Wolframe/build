@@ -61,6 +61,24 @@ get_hostname( )
 	esac
 }
 
+# get current git revision we are building locally and on OBS
+get_git_version( )
+{
+	write_creds
+
+	cat >/tmp/build.$$ <<EOF
+get GIT_VERSION
+quit
+EOF
+	ftp $FTP_SERVER </tmp/build.$$ >/dev/null
+
+	OSB_GIT_VERSION=`cat GIT_VERSION`
+
+	rm -f /tmp/build.$$ GIT_VERSION
+
+	remove_creds
+}
+
 # get current data and status for this builder
 get_status( )
 {

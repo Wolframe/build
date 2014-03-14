@@ -66,6 +66,8 @@ case $OP in
 		echo "OSB Status: $OSB_STATUS"
 		echo "Virtual manchine name: $OSB_VM_NAME"
 		echo "Hostname: $OSB_HOST_NAME"
+		get_git_version
+		echo "Git revision: $OSB_GIT_VERSION"
 		;;
 	
 	set)

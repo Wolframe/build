@@ -62,7 +62,7 @@ REMOTE_SHA=`git ls-remote origin -h refs/heads/master | cut -f 1`
 OUR_SHA=`git rev-list HEAD | head -n 1`
 echo "We are at revision $OUR_SHA"
 echo "Remote revision is $REMOTE_SHA"
-if test "x$OUR_SHA" = "x$REMOTE_SHA"; then
+if test "x$OUR_SHA" != "x$REMOTE_SHA"; then
 	global_unlock
 	git pull && $base/$(basename $0) && exit
 fi

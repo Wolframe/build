@@ -139,7 +139,9 @@
 			document.getElementById( "watchLast" ).disabled = false; 
 		}
 
-		var url = "<xsl:value-of select="/page/@absoluteSelf"/>log.php?file=<xsl:value-of select="/page/@base"/>docs/<xsl:value-of select="revision"/>/<xsl:value-of select="arch"/>/<xsl:value-of select="platform"/>/log.txt&amp;pos=" + pos;
+		filter = document.getElementById( "filter" ).value;
+
+		var url = "<xsl:value-of select="/page/@absoluteSelf"/>log.php?file=<xsl:value-of select="/page/@base"/>docs/<xsl:value-of select="revision"/>/<xsl:value-of select="arch"/>/<xsl:value-of select="platform"/>/log.txt&amp;pos=" + pos + "&amp;filter=" + encodeURIComponent( filter );
 		request.open( "GET", url, true );
 		request.onreadystatechange = updatePage;
 		request.send( null );
@@ -149,11 +151,60 @@
 		if( request.readyState == 4 ) {
 			if( request.status == 200 ) {
 				var text = request.responseText;
-				log.innerHTML = text;
+				var lines = text.split( '\n' );
+				var nofLines = lines[0];
+				lines.splice( 0, 1 );
+				var newtext = lines.join( '\n' );
+				log.innerHTML = newtext;
+				adaptBoundaries( nofLines );
 			} else {
 				alert( "Error! Request status is " + request.status );
 			}
 		}
+	}
+
+	function adaptBoundaries( nofLines ) {
+		if( nofLines == 0 ) {
+			filterAlert.innerHTML = "no matches";
+		} else {
+			filterAlert.innerHTML = nofLines + " lines match";
+		}
+
+		allDisabled = ( nofLines == 0 );
+                document.getElementById( "watchSlider" ).disabled = allDisabled;
+                document.getElementById( "watchFirst" ).disabled = allDisabled;
+                document.getElementById( "watchNext" ).disabled = allDisabled;
+                document.getElementById( "watchPrev" ).disabled = allDisabled;
+                document.getElementById( "watchLast" ).disabled = allDisabled;
+		if( pos &lt; 20 ) {
+			document.getElementById( "watchFirst" ).disabled = true; 
+			document.getElementById( "watchPrev" ).disabled = true; 
+		} else {
+			document.getElementById( "watchFirst" ).disabled = false; 
+			document.getElementById( "watchPrev" ).disabled = false; 
+		}
+		if( pos &gt; maxPos - 20 ) {
+			document.getElementById( "watchNext" ).disabled = true; 
+			document.getElementById( "watchLast" ).disabled = true; 
+		} else {
+			document.getElementById( "watchNext" ).disabled = false; 
+			document.getElementById( "watchLast" ).disabled = false; 
+		}
+
+		if( nofLines != maxPos ) {
+			maxPos = nofLines;
+			document.getElementById( "watchSlider" ).max = maxPos;
+		}
+		if( pos > nofLines ) {
+			pos = 1;
+			scrollToPos( pos );
+		}
+
+	}
+
+	function filterLog( ) {
+		pos = document.getElementById( "watchSlider" ).value;
+		scrollTo( pos );
 	}
 
 	function watchFirst( ) {
@@ -195,8 +246,15 @@
 	}
 
 </script>
+	<table><tr>
+	  <td style="width:100px;" class="label">Filter:</td>
+	  <td>
+		<input id="filter" type="text" onKeyUp="filterLog( );"/>
+		<div style="float: right" id="filterAlert"/>
+          </td>
+        </tr></table>
         <table><tr>
-          <td style="width:100px;" class="label">Scroll logfile</td>
+          <td style="width:100px;" class="label">Scroll logfile:</td>
                         <td>
                                 <input type="button" style="width:40px; 0px" id="watchFirst" value="&lt;&lt;" onClick="watchFirst( );"/>
 				&#160;

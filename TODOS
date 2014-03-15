@@ -13,4 +13,3 @@
     the locks
 - allow platform,arch pairs (for instance (Arch_Extra,arm6l) or (Solaris_10,SPARC)).
   Currently all platforms have the same archs.
-- add a filter for logviews matching patterns (sed)

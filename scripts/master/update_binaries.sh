@@ -15,6 +15,10 @@ esac
 cd $OSC_HOME/$OSC_PROJECT
 osc up
 OSC_REVISION=`osc info | grep Revision | cut -f 2 -d ' '`
+if test "x$OSC_REVISION" = "x"; then
+	echo "OSC not returning a proper revision, OBS down?"
+	exit 0
+fi
 
 BINARY_OSC_VERSION_FILE=$CACHE_DIR/BINARY_OSC_VERSION
 

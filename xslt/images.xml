@@ -141,4 +141,9 @@
     <url>ubuntu.png</url>
     <alt>Ubuntu 13.10</alt>
   </image>
+  <image>
+    <src>Arch_Clang</src>
+    <url>archlinux.png</url>
+    <alt>Archlinux</alt>
+  </image>
 </images>

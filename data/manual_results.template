@@ -10,3 +10,5 @@ Scientific_Linux-6	x86_64	disabled	"Scientific Linux 6 (64-bit)"	sl6-64.lan
 Scientific_Linux-6	i586	disabled	"Scientific Linux 6"	sl6.lan
 Scientific_Linux-5	x86_64	disabled	"Scientific Linux 5 (64-bit)"	sl5-64.lan
 Scientific_Linux-5	i586	disabled	"Scientific Linux 5"	sl5.lan
+Arch_Clang	x86_64	succeeded	"ArchLinux clang (64-bit)"	archlinux-clang-64.lan
+Arch_Clang	i586	succeeded	"ArchLinux clang"	archlinux-clang.lan

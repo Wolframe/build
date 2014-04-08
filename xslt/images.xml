@@ -146,4 +146,9 @@
     <url>archlinux.png</url>
     <alt>Archlinux</alt>
   </image>
+  <image>
+    <src>Arch_Icc</src>
+    <url>archlinux.png</url>
+    <alt>Archlinux</alt>
+  </image>
 </images>

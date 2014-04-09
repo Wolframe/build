@@ -158,7 +158,7 @@ case $PLATFORM.$LINUX_DIST in
 		
 	LINUX.arch*)
 		if test "x$ARCH" = "xx86"; then
-			ARCH="i386"
+			ARCH="i686"
 		fi
 		for file in /root/archbuild/PKGS/$ARCH/$PROJECT_PREFIX*.tar.xz; do
 			upload_file $file

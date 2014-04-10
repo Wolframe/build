@@ -1,5 +1,7 @@
 Slackware_14	x86_64
 Slackware_14	i586
+FreeBSD_10	x86_64
+FreeBSD_10	i586
 FreeBSD_9	x86_64
 FreeBSD_9	i586
 FreeBSD_8	x86_64

@@ -57,6 +57,11 @@
     <alt>FreeBSD 9</alt>
   </image>
   <image>
+    <src>FreeBSD_10</src>
+    <url>freebsd.png</url>
+    <alt>FreeBSD 10</alt>
+  </image>
+  <image>
     <src>NetBSD_6</src>
     <url>netbsd.png</url>
     <alt>NetBSD 9</alt>

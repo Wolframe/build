@@ -1,5 +1,7 @@
 Slackware_14	x86_64	disabled	"Slackware 14.0 (64-bit)"	slackware14-64.lan
 Slackware_14	i586	disabled	"Slackware 14.0"	slackware14.lan
+FreeBSD_10	x86_64	disabled	"FreeBSD 10.0 (64-bit)"	freebsd10-64.lan
+FreeBSD_10	i586	disabled	"FreeBSD 10.0"	freebsd10.lan
 FreeBSD_9	x86_64	disabled	"FreeBSD 9.2 (64-bit)"	freebsd9-64.lan
 FreeBSD_9	i586	disabled	"FreeBSD 9.2"	freebsd9.lan
 FreeBSD_8	x86_64	disabled	"FreeBSD 8.4 (64-bit)"	freebsd8-64.lan

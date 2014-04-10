@@ -69,6 +69,16 @@ if test "x$OUR_SHA" != "x$REMOTE_SHA"; then
 	git pull && $base/$(basename $0) && exit
 fi
 
+# draw in environment for ICC
+case $PLATFORM.$LINUX_DIST in
+	LINUX.arch*)
+		if test -x /etc/profile.d/intel_compilers.sh; then
+			. /etc/profile.d/intel_compilers.sh
+		fi
+		;;
+	*)
+esac
+
 # force usage of ccache
 case $PLATFORM.$LINUX_DIST in
 	LINUX.redhat*)
@@ -157,6 +167,9 @@ case $PLATFORM.$LINUX_DIST in
 		;;
 		
 	LINUX.arch*)
+		if test "x$ARCH" = "xx86"; then
+			ARCH="i686"
+		fi
 		for file in /root/archbuild/PKGS/$ARCH/$PROJECT_PREFIX*.tar.xz; do
 			upload_file $file
 		done

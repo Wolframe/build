@@ -179,7 +179,7 @@ case $PLATFORM.$LINUX_DIST in
 		if test "x$ARCH" = "xx86"; then
 			ARCH="i686"
 		fi
-		for file in /root/bsdbuild/PKGS/$ARCH/$PROJECT_PREFIX*.tgz; do
+		for file in /root/bsdbuild/PKGS/$ARCH/$PROJECT_PREFIX*.t[xg]z; do
 			upload_file $file
 		done
 		;;

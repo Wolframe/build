@@ -81,6 +81,7 @@ for arch in $archs; do
 		mv -fuv binaries/*.deb $dir 2>/dev/null
 		mv -fuv binaries/*.pkg.tar.xz $dir 2>/dev/null
 		mv -fuv binaries/*.tgz $dir 2>/dev/null
+		mv -fuv binaries/*.txz $dir 2>/dev/null
 		rm -rf binaries 2>/dev/null
 		/sbin/restorecon -Rv $dir >/dev/null 2>&1
 	done

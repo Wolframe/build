@@ -13,3 +13,5 @@
     the locks
 - allow platform,arch pairs (for instance (Arch_Extra,arm6l) or (Solaris_10,SPARC)).
   Currently all platforms have the same archs.
+- eventually check out workspaces befere "de-heading" them. Got weird git errors
+  on FreeBSD 9

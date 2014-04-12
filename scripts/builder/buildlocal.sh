@@ -175,11 +175,20 @@ case $PLATFORM.$LINUX_DIST in
 		done
 		;;
 		
-	FREEBSD*|NETBSD*)
+	FREEBSD*)
 		if test "x$ARCH" = "xx86"; then
 			ARCH="i686"
 		fi
 		for file in /root/bsdbuild/PKGS/$ARCH/$PROJECT_PREFIX*.t[xg]z; do
+			upload_file $file
+		done
+		;;
+
+	NETBSD*)
+		if test "x$ARCH" = "xx86"; then
+			ARCH="i686"
+		fi
+		for file in $HOME/bsdbuild/PKGS/$ARCH/$PROJECT_PREFIX*.t[xg]z; do
 			upload_file $file
 		done
 		;;

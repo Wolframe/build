@@ -46,7 +46,7 @@ schedule_tasks_real( )
 				isalive "$OSB_HOST_NAME"
 				if test $RES = 0; then
 					echo "$OSB_HOST_NAME is not up, not scheduling, setting to failed.." >>$LOGFILE
-					set_status "$OSB_NAME" "$OSB_ARCH" "failed"
+					set_status "$OSB_NAME" "$OSB_ARCH" "skip"
 				else
 					echo "Scheduling real machine $OSB_NAME $OSB_ARCH for building.." >>$LOGFILE
 					set_status "$OSB_NAME" "$OSB_ARCH" "building"

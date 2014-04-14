@@ -63,10 +63,21 @@ terminate_tasks( )
 	FINI_STATUS=`echo $TERMINATE_STATUS | tr -d '*'`
 	get_first_status $TERMINATE_STATUS
 	while test "x$OSB_NAME" != "x"; do
-		echo "Terminating builder for $OSB_NAME $OSB_ARCH.." >>$LOGFILE
-		stopvm "$OSB_VM_NAME" "$OSB_HOST_NAME"
-		set_status "$OSB_NAME" "$OSB_ARCH" "$FINI_STATUS"
-		get_next_status $TERMINATE_STATUS
+		case "$OSB_VM_NAME" in
+			PHYS*)
+				# just collect results and toggle state, physical
+				# machine stays up
+				echo "Builder on real machine $OSB_NAME $OSB_ARCH finished building.."
+				set_status "$OSB_NAME" "$OSB_ARCH" "$FINI_STATUS"
+				get_next_status $TERMINATE_STATUS
+				;;
+			
+			*)
+				echo "Terminating builder for $OSB_NAME $OSB_ARCH.." >>$LOGFILE
+				stopvm "$OSB_VM_NAME" "$OSB_HOST_NAME"
+				set_status "$OSB_NAME" "$OSB_ARCH" "$FINI_STATUS"
+				get_next_status $TERMINATE_STATUS
+		esac
 	done
 }
 

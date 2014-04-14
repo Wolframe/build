@@ -149,11 +149,21 @@
   <image>
     <src>Arch_Clang</src>
     <url>archlinux.png</url>
-    <alt>Archlinux</alt>
+    <alt>Archlinux (Clang compiler)</alt>
   </image>
   <image>
     <src>Arch_Icc</src>
     <url>archlinux.png</url>
-    <alt>Archlinux</alt>
+    <alt>Archlinux (Intel compiler)</alt>
+  </image>
+  <image>
+    <src>Arch_Arm</src>
+    <url>archlinux.png</url>
+    <alt>Archlinux ARM</alt>
+  </image>
+  <image>
+    <src>Solaris_10</src>
+    <url>solaris.png</url>
+    <alt>Solaris 10</alt>
   </image>
 </images>

@@ -46,6 +46,9 @@
         <xsl:variable name="platform" select="."/>
         <xsl:for-each select="$archs/arch">
           <xsl:variable name="arch" select="."/>
+
+          <xsl:variable name="nof_builds" select="count($builds/build/results/result[arch=$arch and platform=$platform]/status)"/>
+          <xsl:if test="$nof_builds &gt; 0">
           <tr>
             <th>
             <xsl:call-template name="image">
@@ -104,6 +107,7 @@
               </xsl:element>
             </xsl:for-each>
             </tr>
+            </xsl:if>
           </xsl:for-each>
       </xsl:for-each>
     </table>

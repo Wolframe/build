@@ -18,11 +18,42 @@ schedule_tasks( )
 {
 	get_first_status "scheduled"
 	while test "x$OSB_NAME" != "x" -a $NOF_VMS_RUNNING -lt $MAX_VMS; do
-		echo "Scheduling new builder for $OSB_NAME $OSB_ARCH.." >>$LOGFILE
-		set_status "$OSB_NAME" "$OSB_ARCH" "building"
-		startvm "$OSB_VM_NAME" "$OSB_HOST_NAME"
-		get_next_status "scheduled"
-		NOF_VMS_RUNNING=`expr $NOF_VMS_RUNNING + 1`
+		case "$OSB_VM_NAME" in
+			PHYS*)
+				# physical machine, not-virtual, ignore when
+				# counting and handling virtual machines
+				get_next_status "scheduled"
+				;;
+			
+			*)
+				echo "Scheduling new builder for $OSB_NAME $OSB_ARCH.." >>$LOGFILE
+				set_status "$OSB_NAME" "$OSB_ARCH" "building"
+				startvm "$OSB_VM_NAME" "$OSB_HOST_NAME"
+				get_next_status "scheduled"
+				NOF_VMS_RUNNING=`expr $NOF_VMS_RUNNING + 1`
+				;;
+		esac
+	done
+}
+
+schedule_tasks_real( )
+{
+	get_first_status "scheduled"
+	while test "x$OSB_NAME" != "x"; do
+		case "$OSB_VM_NAME" in
+			PHYS*)
+				echo "Checking if real machine $OSB_NAME $OSB_ARCH is up.." >>$LOGFILE
+				isalive "$OSB_HOST_NAME"
+				if test $RES = 0; then
+					echo "$OSB_HOST_NAME is not up, not scheduling, setting to failed.." >>$LOGFILE
+					set_status "$OSB_NAME" "$OSB_ARCH" "failed"
+				else
+					echo "Scheduling real machine $OSB_NAME $OSB_ARCH for building.." >>$LOGFILE
+					set_status "$OSB_NAME" "$OSB_ARCH" "building"
+				fi
+				get_next_status "scheduled"
+				;;
+		esac
 	done
 }
 
@@ -79,6 +110,7 @@ if test $has_tasks -eq 1; then
 	else
 		schedule_tasks
 	fi
+	schedule_tasks_real
 fi
 
 # remove lock file

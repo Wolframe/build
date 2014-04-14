@@ -30,9 +30,12 @@
         <td>
           <xsl:element name="a">
             <xsl:attribute name="href">
-              https://github.com/mbarbos/Wolframe/tree/<xsl:value-of select="substring(git_version,1,10)"/>
+              <xsl:value-of select="/page/@scmBaseUrl"/><xsl:value-of select="substring(git_version,1,10)"/>
             </xsl:attribute>
-            <xsl:value-of select="substring(git_version,1,10)"/>
+            <xsl:attribute name="title">
+              <xsl:value-of select="substring(git_version,1,10)"/>
+              </xsl:attribute>
+            <xsl:value-of select="git_version"/>
           </xsl:element>
         </td>
       </tr>

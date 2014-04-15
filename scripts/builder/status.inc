@@ -51,7 +51,7 @@ remove_creds( )
 get_hostname( )
 {
 	case $PLATFORM in
-		NETBSD)
+		NETBSD|SUNOS)
 			HOST=`hostname`
 			;;
 

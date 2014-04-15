@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if test `uname -m` = 'sun4u' -a $SHELL != '/usr/xpg4/bin/sh'; then
+	SHELL=/usr/xpg4/bin/sh
+	export SHELL
+	exec $SHELL $0 $*
+fi
+
 case "$0" in
 	/*)
 		base=`dirname $0`

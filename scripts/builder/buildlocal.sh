@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if test `uname -m` = 'sun4u' -a $SHELL != '/usr/xpg4/bin/sh'; then
+	SHELL=/usr/xpg4/bin/sh
+	export SHELL
+	exec $SHELL $0 $*
+fi
+
 case "$0" in
 	/*)
 		base=`dirname $0`
@@ -27,6 +33,18 @@ case $PLATFORM.$LINUX_DIST in
 	FREEBSD*)
 		PATH=/usr/local/bin:/usr/local/sbin:/usr/sbin:$PATH
 		export PATH
+		;;
+	SUNOS*)
+		TERM=vt220
+		PATH=/opt/csw/bin:/usr/ccs/bin:/usr/bin:/bin:/usr/local/bin:/opt/csw/sbin:/usr/sbin:/sbin
+		LD_LIBRARY_PATH=/opt/csw/lib:/opt/csw/postgresql/lib
+		export TERM PATH LD_LIBRARY_PATH
+		;;
+	LINUX.arch*)
+		# add Intel compiler to the path if we have one (Linux Arch VMs only)
+		if test -x /etc/profile.d/intel_compilers.sh; then
+			. /etc/profile.d/intel_compilers.sh
+		fi
 		;;
 	*)
 esac
@@ -68,16 +86,6 @@ if test "x$OUR_SHA" != "x$REMOTE_SHA"; then
 	global_unlock
 	git pull && $base/$(basename $0) && exit
 fi
-
-# draw in environment for ICC
-case $PLATFORM.$LINUX_DIST in
-	LINUX.arch*)
-		if test -x /etc/profile.d/intel_compilers.sh; then
-			. /etc/profile.d/intel_compilers.sh
-		fi
-		;;
-	*)
-esac
 
 # force usage of ccache
 case $PLATFORM.$LINUX_DIST in
@@ -137,6 +145,11 @@ case $PLATFORM.$LINUX_DIST in
 		packaging/netbsd/buildlocal.sh >build.log 2>&1
 		RET=$?
 		;;
+	
+	SUNOS*)
+		packaging/solaris/buildlocal.sh >build.log 2>&1
+		RET=$?
+		;;
 			
 	*)
 		echo "ERROR: no clue how to build on '$PLATFORM', '$LINUX_DIST'"
@@ -189,6 +202,12 @@ case $PLATFORM.$LINUX_DIST in
 			ARCH="i686"
 		fi
 		for file in $HOME/bsdbuild/PKGS/$ARCH/$PROJECT_PREFIX*.t[xg]z; do
+			upload_file $file
+		done
+		;;
+	
+	SUNOS*)
+		for file in $HOME/solarisbuild/PKGS/$ARCH/$PROJECT_PREFIX*.pkg.Z; do
 			upload_file $file
 		done
 		;;

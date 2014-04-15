@@ -53,6 +53,10 @@ schedule_tasks_real( )
 				fi
 				get_next_status "scheduled"
 				;;
+			
+			*)
+				get_next_status "scheduled"
+				;;
 		esac
 	done
 }

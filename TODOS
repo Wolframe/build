@@ -15,3 +15,4 @@
   Currently all platforms have the same archs.
 - eventually check out workspaces befere "de-heading" them. Got weird git errors
   on FreeBSD 9
+- provide links to downloadable packages (for internal deployement tests)

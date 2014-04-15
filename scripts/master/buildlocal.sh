@@ -78,7 +78,7 @@ platforms=`cat $REPO_CACHE | cut -f 1 | sort | uniq`
 get_first_status
 schedule=1
 while test "x$OSB_NAME" != "x"; do
-	if test $OSB_STATUS != "succeeded" -a $OSB_STATUS != "failed" -a $OSB_STATUS != 'disabled'; then
+	if test $OSB_STATUS != "succeeded" -a $OSB_STATUS != "failed" -a $OSB_STATUS != 'disabled' -a $OSB_STATUS != 'skip'; then
 		echo "Not scheduling now, platform '$OSB_NAME', arch '$OSB_ARCH' is in state '$OSB_STATUS'.."
 		schedule=0
 	fi

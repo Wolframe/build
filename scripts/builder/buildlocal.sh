@@ -124,7 +124,11 @@ case $PLATFORM.$LINUX_DIST in
 		;;
 
 	LINUX.arch*)
-		packaging/archlinux/buildlocal.sh >build.log 2>&1
+		if test "x$ARCH" = "xarmv6l"; then
+			TMPDIR=/var/tmp packaging/archlinux/buildlocal.sh >build.log 2>&1
+		else
+			packaging/archlinux/buildlocal.sh >build.log 2>&1
+		fi
 		RET=$?
 		;;
 	

@@ -90,6 +90,10 @@ if test $WANTED_REVISION = $OSC_REVISION; then
 					echo "" > $LOG_FILE
 					;;
 				
+				"")
+					# ignore empty status (non-existing VMs or real machines)
+					;;
+					
 				*)
 					echo "Ignoring build log for  $WANTED_REVISION, $arch, $platform because of status '$STATUS'.."
 			esac

@@ -17,4 +17,4 @@ Arch_Clang	i586	succeeded	"ArchLinux clang"	archlinux-clang.lan
 Arch_Icc	x86_64	disabled	"ArchLinux icc (64-bit)"	archlinux-icc-64.lan
 Arch_Icc	i586	disabled	"ArchLinux icc"	archlinux-icc.lan
 Arch_Arm	armv6l	disabled	"PHYS ArchLinux ARM"	alarmpi.lan
-Solaris_10	sparc	disabled	"PHYS SPARC Solaris 10"	europa10.lan
+Solaris_10	sun4u	disabled	"PHYS SPARC Solaris 10"	europa10.lan

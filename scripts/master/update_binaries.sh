@@ -46,7 +46,7 @@ OLDIFS=$IFS
 osc results > /tmp/results.$$
 cut -f1-3 $base/../../data/manual_results >> /tmp/results.$$
 while read -r PLATFORM ARCH STATUS; do
-	if test $STATUS != "succeeded" -a $STATUS != "failed" -a $STATUS != 'disabled' -a $STATUS != 'unresolvable' -a $STATUS != 'skip'; then
+	if test "x$STATUS" != "xsucceeded" -a "x$STATUS" != "xfailed" -a "x$STATUS" != 'xdisabled' -a "x$STATUS" != 'xunresolvable' -a "x$STATUS" != 'xskip'; then
 		echo "Not updating binaries now, platform $PLATFORM, arch $ARCH is still building.."
 		exit 0
 	fi

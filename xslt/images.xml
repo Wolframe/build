@@ -147,6 +147,11 @@
     <alt>Ubuntu 13.10</alt>
   </image>
   <image>
+    <src>xUbuntu_14.04</src>
+    <url>ubuntu.png</url>
+    <alt>Ubuntu 14.04</alt>
+  </image>
+  <image>
     <src>Arch_Clang</src>
     <url>archlinux.png</url>
     <alt>Archlinux (Clang compiler)</alt>

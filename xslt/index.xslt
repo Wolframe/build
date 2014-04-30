@@ -77,6 +77,7 @@
                   <xsl:when test="$orig_status='unresolvable'">fail</xsl:when>
                   <xsl:when test="$orig_status='disabled'">disa</xsl:when>
                   <xsl:when test="$orig_status='skip'">skip</xsl:when>
+                  <xsl:when test="$orig_status='excluded'">skip</xsl:when>
                   <xsl:otherwise>??</xsl:otherwise>
                 </xsl:choose>
               </xsl:variable>

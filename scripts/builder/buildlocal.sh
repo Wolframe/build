@@ -4,6 +4,7 @@ if test `uname -m` = 'sun4u' -a $SHELL != '/usr/xpg4/bin/sh'; then
 	SHELL=/usr/xpg4/bin/sh
 	export SHELL
 	exec $SHELL $0 $*
+	exit $?
 fi
 
 case "$0" in

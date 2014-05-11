@@ -29,6 +29,10 @@ if( $filter == '' ) {
 print $lines[0] . "\n";
 exec( $cmd, $output );
 $n = 0;
+
+$output = str_replace( "&", "&amp;", $output );
+$output = str_replace( ">", "&gt;", $output );
+$output = str_replace( "<", "&lt;", $output );
 foreach( $output as $line ) {
   print $line . "\n";
   $n++;

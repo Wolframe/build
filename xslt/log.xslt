@@ -158,7 +158,7 @@
 				var nofLines = lines[0];
 				lines.splice( 0, 1 );
 				var newtext = lines.join( '\n' );
-				log.innerHTML = newtext;
+				log.innerHTML = '<pre>' + newtext + '</pre>';
 				adaptBoundaries( nofLines );
 			} else {
 				alert( "Error! Request status is " + request.status );
@@ -285,7 +285,9 @@
                         </td>
         </tr></table>
         <div class="description" id="log" style="width:100%; height:90%; overflow:auto;">
-          <xsl:value-of select="tail"/>
+          <pre>
+            <xsl:value-of select="tail"/>
+          </pre>
         </div>
       </xsl:otherwise>
     </xsl:choose>

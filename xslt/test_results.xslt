@@ -21,14 +21,14 @@
       <tr>
         <td class="label">Total number of tests:
         </td>
-        <td>
+        <td colspan="2">
           <xsl:value-of select="tests_total"/>
         </td>
       </tr>
       <tr>
         <td class="label">Number of failed tests:
         </td>
-        <td>
+        <td colspan="2">
           <xsl:value-of select="tests_failed"/>
         </td>
       </tr>
@@ -42,8 +42,18 @@
   <xsl:template match="testresult">
 	  
     <tr>
-      <td class="label">		  
- 	    <xsl:value-of select="name"/>
+      <td class="label">
+		<xsl:value-of select="name"/>
+
+        <xsl:element name="a">
+          <xsl:attribute name="href">
+            <xsl:value-of select="/page/@base"/><xsl:value-of select="../revision"/>/<xsl:value-of select="../arch"/>/<xsl:value-of select="../platform"/>/detail_test_result.xslt/<xsl:value-of select="name"/>.xml
+          </xsl:attribute>
+          <xsl:attribute name="title">
+            details of <xsl:value-of select="name"/>
+            </xsl:attribute>
+          details
+        </xsl:element>
 	  </td>
 
         <xsl:variable name="orig_status" select="status"/>
@@ -57,8 +67,10 @@
 	      <xsl:attribute name="style">text-align: left</xsl:attribute>
           <xsl:attribute name="class">status_<xsl:value-of select="$status"/></xsl:attribute>
           <xsl:value-of select="$orig_status"/>
-        (<xsl:value-of select="tests_run - tests_failed"/>/<xsl:value-of select="tests_run"/>)
         </xsl:element>
+        <td>
+        (<xsl:value-of select="tests_run - tests_failed"/>/<xsl:value-of select="tests_run"/>)
+        </td>
 	</tr>
   </xsl:template>
 

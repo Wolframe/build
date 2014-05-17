@@ -24,8 +24,16 @@ else
 fi
 
 REPO_CACHE=$CACHE_DIR/repo.cache
-archs=`cat $REPO_CACHE | cut -f 2 | sort | uniq`
-platforms=`cat $REPO_CACHE | cut -f 1 | sort | uniq`
+if test "x$1" != "x"; then
+	archs=$1
+else
+	archs=`cat $REPO_CACHE | cut -f 2 | sort | uniq`
+fi
+if test "x$2" != "x"; then
+	platforms=$2
+else
+	platforms=`cat $REPO_CACHE | cut -f 1 | sort | uniq`
+fi
 for arch in $archs; do
 	for platform in $platforms; do
 		DEST_DIR=$DATA_DIR/$WANTED_REVISION/$arch/$platform
@@ -34,9 +42,9 @@ for arch in $archs; do
 		TEST_RESULT_FILE=$DEST_DIR/test_results.xml
 		
 		# test results already exist?
-		#if test -f $TEST_RESULT_FILE; then
-		#	continue
-		#fi
+		if test -f $TEST_RESULT_FILE; then
+			continue
+		fi
 		
 		# log file already there? can we extract test results already?
 		if test ! -f $LOG_FILE -a ! -f $XML_FILE; then
@@ -45,7 +53,7 @@ for arch in $archs; do
 		
 		echo "Extracting test results for $arch $platform.."
 		
-		echo "<testresults>" > $TEST_RESULT_FILE
+		echo "<tests>" > $TEST_RESULT_FILE
 
 		echo "<revision>$WANTED_REVISION</revision>" >> $TEST_RESULT_FILE
 		echo "<arch>$arch</arch>"  >> $TEST_RESULT_FILE
@@ -73,12 +81,32 @@ for arch in $archs; do
 			if test $nof_chars -lt 10; then
 				continue
 			fi
-			cat _line | xargs printf "<testresult>\n  <name>%s</name>\n  <status>%s</status>\n  <tests_run>%s</tests_run>\n  <tests_failed>%s</tests_failed>\n</testresult>\n" \
+			cat _line | xargs printf "<testsummary>\n  <name>%s</name>\n  <status>%s</status>\n  <tests_run>%s</tests_run>\n  <tests_failed>%s</tests_failed>\n</testsummary>\n" \
 				>> $TEST_RESULT_FILE
 			rm -f _line
 		done
 		rm -f _stats
 		
+		# XML from gtest
+		awk '/Test result details$/ {flag=1;next} /<\/testresults>$/ {flag=0} flag {print} ' \
+			$LOG_FILE > _xml
+		cat _xml | while read line; do
+			echo "$line" | sed -n 's/\(\[ *[0-9]\+s\] \)\?\(.*\)$/\2/p' > _line
+			grep -- '---' _line >/dev/null
+			if test $? -eq 0; then
+				continue
+			fi
+			grep -- '^\[' _line >/dev/null
+			if test $? -eq 0; then
+				continue
+			fi
+			cat _line >> $TEST_RESULT_FILE
+			rm -f _line
+		done
+		rm -f _xml
 		echo "</testresults>" >> $TEST_RESULT_FILE
+		
+		
+		echo "</tests>" >> $TEST_RESULT_FILE
 	done
 done

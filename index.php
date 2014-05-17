@@ -85,8 +85,7 @@ catch ( \Exception $e)
 	render( $xmlDoc, "error.xslt" );
 }
 
-// transform the XML from the wolframe daemon and add Php layer stuff
-// here:
+// transform the XML here:
 // - variables
 // - state
 // - the page frame
@@ -107,7 +106,12 @@ function transformData( $xmlOrig, $fileSize )
 	if( !$urlRewrite ) {
 		$self .= 'index.php/';
 	}
-	$absoluteSelf = ($_SERVER['HTTPS'] ? "https://" : "http://") . $_SERVER['HTTP_HOST'] . $self;
+	if( isset( $_SERVER['HTTPS'] ) ) {
+		$protocol = $_SERVER['HTTPS'];
+	} else {
+		$protocol = "http";
+	}	
+	$absoluteSelf = $protocol . "://" . $_SERVER['HTTP_HOST'] . $self;
 	$root->setAttribute( 'base', $base );
 	$root->setAttribute( 'self', $self );
 	$root->setAttribute( 'absoluteSelf', $absoluteSelf );

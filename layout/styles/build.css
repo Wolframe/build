@@ -45,6 +45,12 @@
 	text-align: center;
 }
 
+.status_schd
+{
+	 background-color: #FFFFCC;
+	 text-align: center;
+}
+
 .status_run
 {
 	 background-color: #FFFF99;

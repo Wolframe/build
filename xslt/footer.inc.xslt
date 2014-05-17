@@ -89,7 +89,7 @@
 </script>
 
 <!-- Google +1, follow -->
-<script type="text/javascript">
+<!--<script type="text/javascript">
 	window.___gcfg = {
 		lang: 'en-US',
 		parsetags: 'onload'
@@ -100,7 +100,7 @@
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 	}) ();
 </script>
-
+-->
 </xsl:template>
   
 </xsl:stylesheet>

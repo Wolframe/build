@@ -34,7 +34,8 @@
 
 		<div class="one_third">
 			<h2 class="footer_title">Contact Us</h2>
-			<nav class="footer_nav">
+<!--
+				<nav class="footer_nav">
 				<ul class="nospace">
 					<li><strong>Email:</strong> <a href="/mailto:contact@wolframe.net">contact@wolframe.net</a></li>
 					<li>
@@ -54,6 +55,7 @@
 					</li>
 				</ul>
 			</nav>
+-->			
 		</div>
 	</div>
 </div>

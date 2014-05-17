@@ -25,6 +25,31 @@
     <h2>Test Result&#160;<xsl:value-of select="/page/@project"/>,&#160;rev.&#160;<xsl:value-of select="revision"/>,&#160;<xsl:value-of select="arch"/>,&#160;<xsl:value-of select="platform"/></h2>
     <table>
       <tr>
+        <td class="label">Overall test state:
+        </td>
+        <xsl:variable name="orig_status" select="status_total"/>
+        <xsl:variable name="status_class">
+          <xsl:choose>
+            <xsl:when test="$orig_status='ok'">ok</xsl:when>
+            <xsl:when test="$orig_status='error'">fail</xsl:when>
+            <xsl:otherwise>??</xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <xsl:variable name="print_status">
+          <xsl:choose>
+            <xsl:when test="$orig_status='ok'">OK</xsl:when>
+            <xsl:when test="$orig_status='error'">ERROR</xsl:when>
+            <xsl:otherwise>??</xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <xsl:element name="td">
+          <xsl:attribute name="class">status_<xsl:value-of select="$status_class"/></xsl:attribute>
+          <xsl:attribute name="colspan">2</xsl:attribute>
+          <xsl:value-of select="$print_status"/>
+        </xsl:element>
+      </tr>
+
+      <tr>
         <td class="label">Total number of tests:
         </td>
         <td colspan="2">

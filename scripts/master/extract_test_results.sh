@@ -67,6 +67,15 @@ for arch in $archs; do
 		failed_tests=`sed -n 's/\(\[ *[0-9]\+s\] \)\?\([0-9]\+\) tests failed$/\2/p' _summary`
 		echo "<tests_failed>$failed_tests</tests_failed>" >> $TEST_RESULT_FILE
 		rm -f _summary
+		if test "x$failed_tests" = "x"; then
+			echo "<status_total>error</status_total>" >> $TEST_RESULT_FILE
+		else
+			if test $failed_tests -gt 0; then
+				echo "<status_total>error</status_total>" >> $TEST_RESULT_FILE
+			else
+				echo "<status_total>ok</status_total>" >> $TEST_RESULT_FILE
+			fi
+		fi
 		
 		# statistics from gtestReport.txt per test binary run
 		awk '/Test results$/ {flag=1;next} /Test result details$/ {flag=0} flag {print} ' \

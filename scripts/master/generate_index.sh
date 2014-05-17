@@ -47,7 +47,18 @@ RESULTS="$RESULTS<results>"
 osc results > /tmp/results.$$
 cut -f1-3 $base/../../data/manual_results >> /tmp/results.$$
 while read -r PLATFORM ARCH STATUS; do
+	# build status
 	hput states "${ARCH}_${PLATFORM}" $STATUS
+
+	# if there is a test status, this one overrides ok states
+	DEST_DIR=$DATA_DIR/$OSC_REVISION/$ARCH/$PLATFORM
+	TEST_RESULT_FILE=$DEST_DIR/test_results.xml
+	if test -f $TEST_RESULT_FILE; then
+		TEST_STATUS=`sed -n 's/<status_total>\(.*\)<\/status_total>/\1/p' $TEST_RESULT_FILE`
+		if test "x$STATUS" = "xsucceeded" -a "x$TEST_STATUS" = "xerror"; then
+			STATUS="test_error"
+		fi
+	fi
 	RESULTS="$RESULTS<result><platform>$PLATFORM</platform><arch>$ARCH</arch><status>$STATUS</status></result>"
 done < /tmp/results.$$
 rm /tmp/results.$$
@@ -71,10 +82,20 @@ for arch in $archs; do
 	for platform in $platforms; do
 		DEST_DIR=$DATA_DIR/$OSC_REVISION/$arch/$platform
 		XML_FILE=$DEST_DIR/log.xml
+		TEST_RESULT_FILE=$DEST_DIR/test_results.xml
+		# building successfull?
 		if test -f $XML_FILE; then
 			echo "Updating build status in buildlog meta XML for $OSC_REVISION, $arch, $platform.."
 			STATUS=`hget states ${arch}_${platform}`
 			sed -i "s|<status>[^<]*</status>|<status>$STATUS</status>|g" $XML_FILE
+		fi
+		# testing successfull?
+		if test -f $TEST_RESULT_FILE; then
+			echo "Updating test status in buildlog meta XML for $OSC_REVISION, $arch, $platform.."
+			TEST_STATUS=`sed -n 's/<status_total>\(.*\)<\/status_total>/\1/p' $TEST_RESULT_FILE`
+			if test "x$TEST_STATUS" = "xerror"; then
+				sed -i "s|<status>[^<]*</status>|<status>test_error</status>|g" $XML_FILE
+			fi
 		fi
 	done
 done

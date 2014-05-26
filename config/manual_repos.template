@@ -14,7 +14,7 @@ Scientific_Linux-6	x86_64
 Scientific_Linux-6	i586
 Arch_Clang	x86_64
 Arch_Clang	i586
-Centos_Icc	x86_64
-Centos_Icc	i586
+CentOS_Icc	x86_64
+CentOS_Icc	i586
 Arch_Arm	armv6l
 Solaris_10	sun4u

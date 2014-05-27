@@ -89,18 +89,26 @@
           </xsl:element>
         </td>
       </tr>
-      <tr>
-        <td class="label">Test results:
-        </td>
-        <td>
-          <xsl:element name="a">
-            <xsl:attribute name="href">
-              <xsl:value-of select="/page/@base"/><xsl:value-of select="revision"/>/<xsl:value-of select="arch"/>/<xsl:value-of select="platform"/>/test_results.xml
-            </xsl:attribute>
-            test result overview
-          </xsl:element>
-        </td>
-      </tr>
+
+      <xsl:variable name="test_result_file">../docs/<xsl:value-of select="revision"/>/<xsl:value-of select="arch"/>/<xsl:value-of select="platform"/>/test_results.xml</xsl:variable>
+
+      <xsl:choose>
+        <xsl:when test="boolean(document($test_result_file))">
+              <tr>
+                <td class="label">Test results:
+                </td>
+                <td>
+                  <xsl:element name="a">
+                    <xsl:attribute name="href">
+                      <xsl:value-of select="/page/@base"/><xsl:value-of select="revision"/>/<xsl:value-of select="arch"/>/<xsl:value-of select="platform"/>/test_results.xml
+                    </xsl:attribute>
+                    test result overview
+                  </xsl:element>
+                </td>
+              </tr>
+        </xsl:when>
+      </xsl:choose>
+
     </table>
     <xsl:choose>
       <xsl:when test="/page/@browser='lynx2'">

@@ -71,6 +71,15 @@ guess_os( )
 					elif test -f /etc/slackware-version; then
 						LINUX_DIST='slackware'
 						LINUX_REV=`cat /etc/slackware-version | cut -d ' ' -f 2 | cut -d . -f 1,2`
+					elif test -f /etc/centos-release; then
+						LINUX_DIST='redhat'
+						LINUX_REV=`cat /etc/centos-release | cut -f 3 -d ' '`
+						osb_major=`echo $LINUX_REV | cut -f 1 -d .`
+						osb_minor=`echo $LINUX_REV | cut -f 2 -d .`
+						if test $osb_minor -lt 10; then
+							osb_minor="${osb_minor}0"
+						fi
+						OSB_PLATFORM="centos_version ${osb_major}${osb_minor}"
 					elif test -f /etc/system-release; then
 						LINUX_DIST='redhat'
 						LINUX_REV=`cat /etc/system-release | cut -f 4 -d ' '`

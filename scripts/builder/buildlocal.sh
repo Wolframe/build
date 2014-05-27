@@ -41,7 +41,7 @@ case $PLATFORM.$LINUX_DIST in
 		LD_LIBRARY_PATH=/opt/csw/lib:/opt/csw/postgresql/lib
 		export TERM PATH LD_LIBRARY_PATH
 		;;
-	LINUX.arch*)
+	LINUX.redhat)
 		# add Intel compiler to the path if we have one (Linux Arch VMs only)
 		if test -x /etc/profile.d/intel_compilers.sh; then
 			. /etc/profile.d/intel_compilers.sh

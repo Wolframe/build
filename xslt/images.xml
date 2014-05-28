@@ -17,11 +17,6 @@
     <alt>Centos 6</alt>
   </image>
   <image>
-    <src>CentOS_Icc</src>
-    <url>centos.png</url>
-    <alt>CentOS Icc</alt>
-  </image>
-  <image>
     <src>Debian_6.0</src>
     <url>debian.png</url>
     <alt>Debian 6</alt>

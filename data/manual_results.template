@@ -14,7 +14,7 @@ Scientific_Linux-5	x86_64	disabled	"Scientific Linux 5 (64-bit)"	sl5-64.lan
 Scientific_Linux-5	i586	disabled	"Scientific Linux 5"	sl5.lan
 Arch_Clang	x86_64	succeeded	"ArchLinux clang (64-bit)"	archlinux-clang-64.lan
 Arch_Clang	i586	succeeded	"ArchLinux clang"	archlinux-clang.lan
-CentOS_Icc	x86_64	disabled	"CentOS icc (64-bit)"	centos-icc-64.lan
-CentOS_Icc	i586	disabled	"CentOS icc"	centos-icc.lan
+Arch_Icc	x86_64	disabled	"Arch icc (64-bit)"	archlinux-icc-64.lan
+Arch_Icc	i586	disabled	"Arch icc"	archlinux-icc.lan
 Arch_Arm	armv6l	disabled	"PHYS ArchLinux ARM"	alarmpi.lan
 Solaris_10	sun4u	disabled	"PHYS SPARC Solaris 10"	europa10

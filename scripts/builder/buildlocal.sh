@@ -43,20 +43,8 @@ case $PLATFORM.$LINUX_DIST in
 		;;
 	LINUX.arch*)
 		# add Intel compiler to the path if we have one (Linux Arch VMs only)
-		if test -f /opt/intel/bin/iccvars.sh; then
-			MACHINE_ARCH=`uname -m`
-			if test "$MACHINE_ARCH" = "x86_64"; then
-				ICC_ARCH="intel64"
-			else
-				if test "$MACHINE_ARCH" = "i686"; then
-					ICC_ARCH="ia32"
-				else
-					print "ERROR: Unknown Intel architecture $MACHIN_ARCH!"
-					global_unlock
-					exit 1
-				fi
-			fi
-			. /opt/intel/bin/iccvars.sh $ICC_ARCH
+		if test -x /etc/profile.d/intel_compilers.sh; then
+			. /etc/profile.d/intel_compilers.sh
 		fi
 		;;
 	LINUX.redhat)

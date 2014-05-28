@@ -41,6 +41,24 @@ case $PLATFORM.$LINUX_DIST in
 		LD_LIBRARY_PATH=/opt/csw/lib:/opt/csw/postgresql/lib
 		export TERM PATH LD_LIBRARY_PATH
 		;;
+	LINUX.arch*)
+		# add Intel compiler to the path if we have one (Linux Arch VMs only)
+		if test -f /opt/intel/bin/iccvars.sh; then
+			MACHINE_ARCH=`uname -m`
+			if test "$MACHINE_ARCH" = "x86_64"; then
+				ICC_ARCH="intel64"
+			else
+				if test "$MACHINE_ARCH" = "i686"; then
+					ICC_ARCH="ia32"
+				else
+					print "ERROR: Unknown Intel architecture $MACHIN_ARCH!"
+					global_unlock
+					exit 1
+				fi
+			fi
+			. /opt/intel/bin/iccvars.sh $ICC_ARCH
+		fi
+		;;
 	LINUX.redhat)
 		# add Intel compiler to the path if we have one (Centos VMs with Intel CC only)
 		if test -f /opt/intel/bin/iccvars.sh; then

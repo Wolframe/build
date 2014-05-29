@@ -21,4 +21,4 @@
 - Use puppet/cfengine to install required packages for
   - building
   - system tests (szenarios with software data, e. g. real customer system with mock data)
-
+- fix hopping slider in log view

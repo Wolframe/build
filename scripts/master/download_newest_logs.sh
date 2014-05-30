@@ -69,6 +69,7 @@ if test $WANTED_REVISION = $OSC_REVISION; then
 		for platform in $platforms; do
 			DEST_DIR=$DATA_DIR/$WANTED_REVISION/$arch/$platform
 			LOG_FILE=$DEST_DIR/log.txt
+			TEST_RESULT_FILE=$DEST_DIR/test_results.xml
 			if test ! -d $DEST_DIR; then
 				mkdir -p $DEST_DIR
 			fi
@@ -79,15 +80,18 @@ if test $WANTED_REVISION = $OSC_REVISION; then
 					if test ! -f $LOG_FILE; then
 						echo "Getting build log for $WANTED_REVISION, $arch, $platform.."
 						osc buildlog $platform $arch > $LOG_FILE
+						rm -f $TEST_RESULT_FILE
 					fi
 					if test -f $MANUAL_BUILD_LOG_FILE; then
 						echo "Getting local build log for $WANTED_REVISION, $arch, $platform.."
 						mv -f $MANUAL_BUILD_LOG_FILE $LOG_FILE
+						rm -f $TEST_RESULT_FILE
 					fi
 					;;
 				
 				unresolvable)
 					echo "" > $LOG_FILE
+					rm -f $TEST_RESULT_FILE
 					;;
 				
 				"")

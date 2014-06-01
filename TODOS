@@ -22,3 +22,4 @@
   - building
   - system tests (szenarios with software data, e. g. real customer system with mock data)
 - fix hopping slider in log view
+- write a module for OSC functions, make sure they survive github outages

@@ -77,14 +77,14 @@
                   <xsl:when test="$orig_status='disabled'">disa</xsl:when>
                   <xsl:when test="$orig_status='skip'">skip</xsl:when>
                   <xsl:when test="$orig_status='excluded'">skip</xsl:when>
-                  <xsl:when test="$orig_status='test_error'">fail</xsl:when>
+                  <xsl:when test="$orig_status='test_error'">test</xsl:when>
                   <xsl:when test="$orig_status='scheduled'">schd</xsl:when>
                   <xsl:otherwise>??</xsl:otherwise>
                 </xsl:choose>
               </xsl:variable>
               <xsl:element name="td">
                 <xsl:choose>
-                  <xsl:when test="$status='ok' or $status='fail'">
+                  <xsl:when test="$status='ok' or $status='fail' or $status='test'">
                     <xsl:attribute name="class">status_<xsl:value-of select="$status"/></xsl:attribute>
                     <xsl:element name="a">
                       <xsl:attribute name="href">

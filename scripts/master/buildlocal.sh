@@ -12,6 +12,7 @@ esac
                         
 . $base/config
 . $base/status.inc
+. $base/obs.inc
 
 schedule_tasks( )
 {
@@ -42,18 +43,11 @@ if test $DISABLE_LOCAL_BUILDS -eq 1; then
 	exit 0
 fi
 
-cd $OSC_HOME/$OSC_PROJECT
-osc up
-OSC_REVISION=`osc info | grep Revision | cut -f 2 -d ' '`
-
-if test "x$OSC_REVISION" = "x"; then
-	echo "OSC revision cannot be determined. Check network or OSC workspace for errors!" 1>&2
-	exit 1
-fi
+update_and_get_latest_obs_revision
 
 LOCAL_BUILD_OSC_VERSION_FILE=$CACHE_DIR/LOCAL_BUILD_OSC_VERSION
 
-if test -f $LOCAL_BUILD_OSC_VERSION_FILE; then
+if test -f $LOCAL_BUILD_OSC_VERSION_FILE -a -s $LOCAL_BUILD_OSC_VERSION_FILE; then
 	LOCAL_BUILD_OSC_VERSION=`cat $LOCAL_BUILD_OSC_VERSION_FILE`
 else
 	LOCAL_BUILD_OSC_VERSION=0

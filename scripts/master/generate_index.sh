@@ -12,10 +12,9 @@ esac
                         
 . $base/config
 . $base/hashmap.inc
+. $base/obs.inc
 
-cd $OSC_HOME/$OSC_PROJECT
-osc up
-OSC_REVISION=`osc info | grep Revision | cut -f 2 -d ' '`
+update_and_get_latest_obs_revision
 
 echo "Updating status page for '$OSC_PROJECT', revision $OSC_REVISION.."
 

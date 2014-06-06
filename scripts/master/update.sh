@@ -25,9 +25,7 @@ $base/update_metadata.sh 2>&1 >$LOG_FILE
 $base/buildlocal.sh 2>&1 >>$LOG_FILE
 $base/generate_index.sh 2>&1 >>$LOG_FILE
 $base/download_newest_logs.sh 2>&1 >>$LOG_FILE
-if test $RESPECT_TEST_RESULTS = 1; then
-	$base/extract_test_results.sh 2>&1 >>$LOG_FILE
-fi
+$base/extract_test_results.sh 2>&1 >>$LOG_FILE
 $base/generate_index.sh 2>&1 >>$LOG_FILE
 $base/update_binaries.sh 2>&1 >>$LOG_FILE
 $base/cleanup.sh 2>&1 >>$LOG_FILE

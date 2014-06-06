@@ -12,15 +12,14 @@ esac
 
 . $base/config
 . $base/hashmap.inc
+. $base/obs.inc
 
 if test $RESPECT_TEST_RESULTS = 0; then
 	echo "Extraction of test results is disabled by configuration, see RESPECT_TEST_RESULTS.."
 	exit 0
 fi
 
-cd $OSC_HOME/$OSC_PROJECT
-osc -q up
-OSC_REVISION=`osc info | grep Revision | cut -f 2 -d ' '`
+update_and_get_latest_obs_revision
 
 if test $# -eq 1; then
 	WANTED_REVISION=$1

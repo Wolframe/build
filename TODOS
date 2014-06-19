@@ -27,3 +27,15 @@
   - http://cgit.notk.org/gitolite/kvm-wrapper.git/
   - http://codewreck.org/kvm-wrapper/
   - docker?
+- creating VMS
+  - check out libvirt
+  - check out how to create virtual box images
+  - check out how to destroy vms (qemu was just deleting the image files)
+  - check out how to use chrooted environments
+    - chroot (traditional)
+    - systemd-nspawn (modern Linux)
+    - jail (FreeBSD), podriere as build system on intel64, builds all versions
+      of FreeBSD and IA32 version too
+    - Linux Containers
+    - cross-compilation (for building ok, but for testing? unit and system testing?)
+    - what can we test this way? what not?

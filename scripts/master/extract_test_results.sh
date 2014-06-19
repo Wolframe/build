@@ -113,7 +113,12 @@ for arch in $archs; do
 			if test $? -eq 0; then
 				continue
 			fi
-			sed -i 's/\[ *[\.0-9]\+\] serial8250: too much work for irq4//g' _line
+			grep 'serial8250: too much work for irq4' _line >/dev/null
+			if test $? -eq 0; then
+				sed -i 's/\[ *[\.0-9]\+\] serial8250: too much work for irq4//g' _line
+				cat _line | tr -d '\n' > _tmp
+				mv _tmp _line
+			fi
 			cat _line >> $TEST_RESULT_FILE
 			rm -f _line
 		done

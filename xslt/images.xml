@@ -171,4 +171,9 @@
     <url>solaris.png</url>
     <alt>Solaris 10</alt>
   </image>
+  <image>
+    <src>Raspbian_Arm</src>
+    <url>raspbian.png</url>
+    <alt>Raspbian</alt>
+  </image>
 </images>

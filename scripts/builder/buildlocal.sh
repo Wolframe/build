@@ -112,6 +112,12 @@ case $PLATFORM.$LINUX_DIST in
 		. /etc/profile.d/ccache.sh
 		;;
 	
+	LINUX.debian*)
+		CCACHE_DIR=/root/.ccache
+		PATH=/usr/lib/ccache/:${PATH}
+		export PATH CCACHE_DIR
+		;;
+	
 	NETBSD*)
 		CCACHE_DIR=/root/.ccache
 		export CCACHE_DIR
@@ -152,6 +158,15 @@ case $PLATFORM.$LINUX_DIST in
 
 	LINUX.arch*)
 		packaging/archlinux/buildlocal.sh >build.log 2>&1
+		RET=$?
+		;;
+
+	LINUX.debian*)
+		if test ! -L debian; then
+			rm debian
+			ln -s packaging/debian debian
+		fi
+		dpkg-buildpackage -us -uc >build.log 2>&1
 		RET=$?
 		;;
 	
@@ -203,6 +218,12 @@ case $PLATFORM.$LINUX_DIST in
 			ARCH="i686"
 		fi
 		for file in /root/archbuild/PKGS/$ARCH/$PROJECT_PREFIX*.tar.xz; do
+			upload_file $file
+		done
+		;;
+	
+	LINUX.debian*)
+		for file in $LOCAL_BUILD_DIR/../$PROJECT_PREFIX*.deb; do
 			upload_file $file
 		done
 		;;

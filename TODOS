@@ -39,3 +39,4 @@
     - Linux Containers
     - cross-compilation (for building ok, but for testing? unit and system testing?)
     - what can we test this way? what not?
+- build a specific branch (maybe later if we have more than one main release branch)

@@ -97,6 +97,11 @@
     <alt>Redhat RHEL 6</alt>
   </image>
   <image>
+    <src>RedHat_RHEL-7</src>
+    <url>redhat.png</url>
+    <alt>Redhat RHEL 6</alt>
+  </image>
+  <image>
     <src>Scientific_Linux-5</src>
     <url>scili.png</url>
     <alt>Scientific Linux 5</alt>

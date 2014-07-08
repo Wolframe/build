@@ -17,4 +17,4 @@ Arch_Clang	i586
 Arch_Icc	x86_64
 Arch_Icc	i586
 Solaris_10	sun4u
-Raspbian_Arm	armv6l
+Arch_Arm	armv6l

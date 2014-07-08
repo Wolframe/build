@@ -168,17 +168,12 @@
   </image>
   <image>
     <src>Arch_Arm</src>
-    <url>archlinux.png</url>
+    <url>raspberrypi.png</url>
     <alt>Archlinux ARM</alt>
   </image>
   <image>
     <src>Solaris_10</src>
     <url>solaris.png</url>
     <alt>Solaris 10</alt>
-  </image>
-  <image>
-    <src>Raspbian_Arm</src>
-    <url>raspbian.png</url>
-    <alt>Raspbian</alt>
   </image>
 </images>

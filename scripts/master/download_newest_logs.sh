@@ -77,9 +77,11 @@ if test $WANTED_REVISION = $OSC_REVISION; then
 				failed|succeeded)
 					MANUAL_BUILD_LOG_FILE=$base/../../data/$platform/$arch/build.log
 					if test ! -f $LOG_FILE -o ! -s $LOG_FILE; then
-						echo "Getting build log for $WANTED_REVISION, $arch, $platform.."
-						osc buildlog $platform $arch > $LOG_FILE
-						rm -f $TEST_RESULT_FILE
+						if test ! -d $base/../../data/$platform/$arch; then
+							echo "Getting build log for $WANTED_REVISION, $arch, $platform.."
+							osc buildlog $platform $arch > $LOG_FILE
+							rm -f $TEST_RESULT_FILE
+						fi
 					fi
 					if test -f $MANUAL_BUILD_LOG_FILE; then
 						echo "Getting local build log for $WANTED_REVISION, $arch, $platform.."

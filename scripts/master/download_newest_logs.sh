@@ -116,8 +116,12 @@ for arch in $archs; do
 		
 		case $STATUS in
 			failed|succeeded)
-				tail -n 25 < $LOG_FILE > /tmp/tail.$$
-				TAIL=`cat /tmp/tail.$$ | tr -dc '[\011\012\015\040-\176]' | sed -e 's~&~\&amp;~g' -e 's~<~\&lt;~g'  -e  's~>~\&gt;~g'`
+				if test -f $LOG_FILE; then
+					tail -n 25 < $LOG_FILE > /tmp/tail.$$
+					TAIL=`cat /tmp/tail.$$ | tr -dc '[\011\012\015\040-\176]' | sed -e 's~&~\&amp;~g' -e 's~<~\&lt;~g'  -e  's~>~\&gt;~g'`
+				else
+					TAIL=""
+				fi
 				;;
 			*)
 				TAIL=''

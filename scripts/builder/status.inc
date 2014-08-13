@@ -79,6 +79,38 @@ EOF
 	remove_creds
 }
 
+# get file with a list of operations we must perform
+get_operations( )
+{
+	write_creds
+
+	cat >/tmp/build.$$ <<EOF
+get OPERATIONS
+quit
+EOF
+	ftp $FTP_SERVER </tmp/build.$$ >/dev/null
+
+	OPERATIONS=`cat OPERATIONS`
+	OPERATION_BUILD=0
+	OPERATION_CLEAN=0
+	OPERATION_PUBLISH=0
+	case $OPERATIONS in
+		build)
+			OPERATION_BUILD=1
+			;;
+		clean)
+			OPERATION_CLEAN=1
+			;;
+		publish)
+			OPERATION_PUBLISH=1
+			;;
+	esac
+
+	rm -f /tmp/build.$$ OPERATIONS
+
+	remove_creds
+}
+
 # get current data and status for this builder
 get_status( )
 {

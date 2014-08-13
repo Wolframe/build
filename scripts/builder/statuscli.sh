@@ -74,6 +74,8 @@ case $OP in
 		echo "Hostname: $OSB_HOST_NAME"
 		get_git_version
 		echo "Git revision: $OSB_GIT_VERSION"
+		get_operations
+		echo "Operations to perform: $OPERATIONS"
 		;;
 	
 	set)

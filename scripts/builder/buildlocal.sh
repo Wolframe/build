@@ -288,7 +288,7 @@ if test $OPERATION_PUBLISH -eq 1; then
 			if test "x$ARCH" = "xx86"; then
 				ARCH="i386"
 			fi
-			for file in /root/rpmbuild/RPMS/$ARCH/$PROJECT_PREFIX*.rpm; do
+			for file in /root/rpmbuild/RPMS/$ARCH/$PROJECT_PREFIX*.rpm /root/rpmbuild/SRPMS/*.src.rpm; do
 				upload_file $file
 			done
 			;;

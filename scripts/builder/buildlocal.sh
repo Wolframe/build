@@ -171,9 +171,8 @@ if test $OPERATION_CLEAN -eq 1; then
 			if test "x$ARCH" = "xx86"; then
 				ARCH="i686"
 			fi
-			for file in /root/slackbuild/PKGS/$ARCH/$PROJECT_PREFIX*.tgz; do
-				upload_file $file
-			done
+			SLACKBUILD=/root/slackbuild
+			rm -rf $SLACKBUILD/BUILD/* $SLACKBUILD/PKG/* $SLACKBUILD/PKGS/$ARCH/*
 			;;
 			
 		LINUX.arch*)

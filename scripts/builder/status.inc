@@ -94,17 +94,19 @@ EOF
 	OPERATION_BUILD=0
 	OPERATION_CLEAN=0
 	OPERATION_PUBLISH=0
-	case $OPERATIONS in
-		build)
-			OPERATION_BUILD=1
-			;;
-		clean)
-			OPERATION_CLEAN=1
-			;;
-		publish)
-			OPERATION_PUBLISH=1
-			;;
-	esac
+	for _op in $OPERATIONS; do
+		case $_op in
+			build)
+				OPERATION_BUILD=1
+				;;
+			clean)
+				OPERATION_CLEAN=1
+				;;
+			publish)
+				OPERATION_PUBLISH=1
+				;;
+		esac
+	done
 
 	rm -f /tmp/build.$$ OPERATIONS
 

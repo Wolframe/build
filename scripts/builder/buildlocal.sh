@@ -134,6 +134,10 @@ echo "CCACHE_DIR: $CCACHE_DIR"
 # we are building now, indicate status
 set_status "building*"
 
+get_operations
+
+RET=0
+
 if test $OPERATION_CLEAN -eq 1; then
 	# every build cleans it's current build release, but not others
 	# this clean operation makes sure there is really nothing left in

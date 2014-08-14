@@ -195,8 +195,7 @@ if test $OPERATION_CLEAN -eq 1; then
 #			done
 #			;;
 			
-		NETBSD*)
-		FREEBSD*)
+		FREEBSD*|NETBSD*)
 			if test "x$ARCH" = "xx86"; then
 				ARCH="i686"
 			fi
@@ -275,8 +274,7 @@ if test $OPERATION_OSUPDATE -eq 1; then
 			fi
 			;;
 
-		NETBSD*)
-		FREEBSD*)
+		FREEBSD*|NETBSD*)
 			echo "WARNING: no way to update '$PLARFORM' automatically.."
 			;;
 			

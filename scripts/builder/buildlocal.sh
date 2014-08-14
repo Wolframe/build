@@ -220,6 +220,22 @@ if test $OPERATION_CLEAN -eq 1; then
 	esac
 fi
 
+if test $OPERATION_OSUPDATE -eq 1; then
+	case $PLATFORM.$LINUX_DIST in
+		LINUX.redhat*)
+			echo "Updating operating system.."
+			yum -y update
+			set_status "building"
+			echo "Rebooting.."
+			reboot
+			;;
+
+		*)
+			echo "ERROR: no clue how to update operating system '$PLATFORM', '$LINUX_DIST'"
+			;;
+	esac	
+fi
+
 if test $OPERATION_BUILD -eq 1; then
 	echo "Updating project '$OSC_PROJECT' from git repository.."
 	# building always current master, update it, then go to

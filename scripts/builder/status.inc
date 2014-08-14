@@ -91,16 +91,20 @@ EOF
 	ftp $FTP_SERVER </tmp/build.$$ >/dev/null
 
 	OPERATIONS=`cat OPERATIONS`
-	OPERATION_BUILD=0
 	OPERATION_CLEAN=0
+	OPERATIONS_OSUPDATE=0
+	OPERATION_BUILD=0
 	OPERATION_PUBLISH=0
 	for _op in $OPERATIONS; do
 		case $_op in
-			build)
-				OPERATION_BUILD=1
-				;;
 			clean)
 				OPERATION_CLEAN=1
+				;;
+			osupdate)
+				OPERATION_OSUPDATE=1
+				;;
+			build)
+				OPERATION_BUILD=1
 				;;
 			publish)
 				OPERATION_PUBLISH=1

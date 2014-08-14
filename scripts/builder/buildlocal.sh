@@ -179,6 +179,9 @@ if test $OPERATION_CLEAN -eq 1; then
 			;;
 			
 		LINUX.arch*)
+			if test "x$ARCH" = "xx86"; then
+				ARCH="i686"
+			fi
 			PKGBUILD=$HOME/archbuild
 			rm -rf $PKGBUILD/BUILD $PKGBUILD/PKG $PKGBUILD/PKGS/$ARCH/*
 			mkdir -p $PKGBUILD/BUILD $PKGBUILD/PKG

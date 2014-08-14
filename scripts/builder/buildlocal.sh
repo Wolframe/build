@@ -226,6 +226,7 @@ if test $OPERATION_OSUPDATE -eq 1; then
 			echo "Updating operating system.."
 			yum -y update
 			set_status "building"
+			global_unlock
 			echo "Rebooting.."
 			reboot
 			;;

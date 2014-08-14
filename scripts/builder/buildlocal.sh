@@ -174,6 +174,8 @@ if test $OPERATION_CLEAN -eq 1; then
 			fi
 			SLACKBUILD=/root/slackbuild
 			rm -rf $SLACKBUILD/BUILD/* $SLACKBUILD/PKG/* $SLACKBUILD/PKGS/$ARCH/*
+			ccache -C
+			ccache -z
 			;;
 			
 		LINUX.arch*)
@@ -236,6 +238,17 @@ if test $OPERATION_OSUPDATE -eq 1; then
 			else
 				echo "Operating system is up to date.."
 			fi
+			;;
+
+		LINUX.slackware*)
+			echo "Updating operating system.."
+			slackpkg update gpg
+			slackpkg install-new
+			slackpkg upgrade-all
+			set_status "building"
+			global_unlock
+			echo "Rebooting.."
+			/sbin/reboot
 			;;
 
 		*)

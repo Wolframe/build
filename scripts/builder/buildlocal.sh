@@ -179,12 +179,11 @@ if test $OPERATION_CLEAN -eq 1; then
 			;;
 			
 		LINUX.arch*)
-			if test "x$ARCH" = "xx86"; then
-				ARCH="i686"
-			fi
-			for file in /root/archbuild/PKGS/$ARCH/$PROJECT_PREFIX*.tar.xz; do
-				upload_file $file
-			done
+			PKGBUILD=$HOME/archbuild
+			rm -rf $PKGBUILD/BUILD $PKGBUILD/PKG $PKGBUILD/PKGS/$ARCH/*
+			mkdir -p $PKGBUILD/BUILD $PKGBUILD/PKG
+			ccache -C
+			ccache -z
 			;;
 		
 		LINUX.debian*)
@@ -249,6 +248,20 @@ if test $OPERATION_OSUPDATE -eq 1; then
 			global_unlock
 			echo "Rebooting.."
 			/sbin/reboot
+			;;
+		
+		LINUX.arch*)
+			pacman --noconfirm -Sy
+			echo "Checking for operating system updates.."
+			PACKAGES_NEEDING_UPDATING=`pacman --noconfirm -Qu | wc -l`
+			if test $PACKAGES_NEEDING_UPDATING -gt 0; then
+				echo "Updating operating system.."
+				pacman --noconfirm -Syu
+				set_status "building"
+				global_unlock
+				echo "Rebooting.."
+				systemctl reboot
+			fi
 			;;
 
 		*)

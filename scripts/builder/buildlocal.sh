@@ -224,12 +224,18 @@ fi
 if test $OPERATION_OSUPDATE -eq 1; then
 	case $PLATFORM.$LINUX_DIST in
 		LINUX.redhat*)
-			echo "Updating operating system.."
-			yum -y update
-			set_status "building"
-			global_unlock
-			echo "Rebooting.."
-			reboot
+			echo "Checking for operating system updates.."
+			yum -y check-update
+			if test $? -eq 100; then
+				echo "Updating operating system.."
+				yum -y update
+				set_status "building"
+				global_unlock
+				echo "Rebooting.."
+				/sbin/reboot
+			else
+				echo "Operating system is up to date.."
+			fi
 			;;
 
 		*)

@@ -164,7 +164,8 @@ if test $OPERATION_CLEAN -eq 1; then
 			RPMBUILD=/root/rpmbuild
 			rm -rf $RPMBUILD/BUILDROOT/* $RPMBUILD/BUILD $RPMBUILD/RPMS/*/* \
 				$RPMBUILD/SRPMS/* $RPMBUILD/SPECS/* $RPMBUILD/SOURCES/*
-			touch $RPMBUILD/SPECS/log
+			ccache -C
+			ccache -z
 			;;
 		
 		LINUX.slackware*)

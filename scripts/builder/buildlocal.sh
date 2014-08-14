@@ -214,9 +214,11 @@ if test $OPERATION_CLEAN -eq 1; then
 			;;
 		
 		SUNOS*)
-			for file in $HOME/solarisbuild/PKGS/$ARCH/$PROJECT_PREFIX*.pkg.Z; do
-				upload_file $file
-			done
+			PKGBUILD=$HOME/solarisbuild
+			rm -rf $PKGBUILD/BUILD $PKGBUILD/PKG $PKGBUILD/PKGS/$ARCH/*
+			mkdir -p $PKGBUILD/BUILD $PKGBUILD/PKG
+			ccache -C
+			ccache -z
 			;;
 
 		*)
@@ -270,6 +272,16 @@ if test $OPERATION_OSUPDATE -eq 1; then
 			fi
 			;;
 
+		SUNOS*)
+			echo "Updating operating system.."
+			pkgutil -U
+			pkgutil -u -y
+			set_status "building"
+			global_unlock
+			echo "Rebooting.."
+			/usr/sbin/reboot
+			;;
+			
 		*)
 			echo "ERROR: no clue how to update operating system '$PLATFORM', '$LINUX_DIST'"
 			;;

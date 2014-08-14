@@ -251,6 +251,9 @@ if test $OPERATION_OSUPDATE -eq 1; then
 			;;
 		
 		LINUX.arch*)
+			echo "Cleaning old packages from package cache.."
+			pacman --noconfirm -Sc
+			echo "Updating package meta information.."
 			pacman --noconfirm -Sy
 			echo "Checking for operating system updates.."
 			PACKAGES_NEEDING_UPDATING=`pacman --noconfirm -Qu | wc -l`

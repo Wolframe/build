@@ -1,17 +1,11 @@
 - TSV state of local systems, use XSLT with TSV see:
   http://ajhaupt.blogspot.ch/2013/02/how-to-xml-ify-tab-separated-text-file.html
-- execute some other command along the build, for example:
-  - update build workspaces
-  - relocate a workspace
-  - clean .ccache (because the software change substantially)
 - more robust lock file cleanup:
   - on startup of builder check if .netrc-lock or .global-lock file/dir ist around
     and how old they are. Check if other builders are still running, if not, wipe
     the locks
 - allow platform,arch pairs (for instance (Arch_Extra,arm6l) or (Solaris_10,SPARC)).
   Currently all platforms have the same archs.
-- eventually check out workspaces befere "de-heading" them. Got weird git errors
-  on FreeBSD 9
 - provide links to downloadable packages (for internal deployement tests)
 - Create images from scratch via description:
   http://www.packer.io/intro

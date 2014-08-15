@@ -112,12 +112,6 @@ case $PLATFORM.$LINUX_DIST in
 		. /etc/profile.d/ccache.sh
 		;;
 	
-	LINUX.debian*)
-		CCACHE_DIR=/root/.ccache
-		PATH=/usr/lib/ccache/:${PATH}
-		export PATH CCACHE_DIR
-		;;
-	
 	NETBSD*)
 		CCACHE_DIR=/root/.ccache
 		export CCACHE_DIR
@@ -189,12 +183,6 @@ if test $OPERATION_CLEAN -eq 1; then
 			ccache -z
 			;;
 		
-#		LINUX.debian*)
-#			for file in $LOCAL_BUILD_DIR/../$PROJECT_PREFIX*.deb; do
-#				upload_file $file
-#			done
-#			;;
-			
 		FREEBSD*|NETBSD*)
 			if test "x$ARCH" = "xx86"; then
 				ARCH="i686"
@@ -275,7 +263,7 @@ if test $OPERATION_OSUPDATE -eq 1; then
 			;;
 
 		FREEBSD*|NETBSD*)
-			echo "WARNING: no way to update '$PLARFORM' automatically.."
+			echo "WARNING: we currently don't update '$PLARFORM' automatically.."
 			;;
 			
 		SUNOS*)
@@ -322,15 +310,6 @@ if test $OPERATION_BUILD -eq 1; then
 			RET=$?
 			;;
 
-		LINUX.debian*)
-			if test ! -L debian; then
-				rm debian
-				ln -s packaging/debian debian
-			fi
-			dpkg-buildpackage -us -uc >build.log 2>&1
-			RET=$?
-			;;
-		
 		FREEBSD*)
 			packaging/freebsd/buildlocal.sh >build.log 2>&1
 			RET=$?
@@ -385,12 +364,6 @@ if test $OPERATION_PUBLISH -eq 1; then
 			done
 			;;
 		
-		LINUX.debian*)
-			for file in $LOCAL_BUILD_DIR/../$PROJECT_PREFIX*.deb; do
-				upload_file $file
-			done
-			;;
-			
 		FREEBSD*)
 			if test "x$ARCH" = "xx86"; then
 				ARCH="i686"

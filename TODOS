@@ -4,6 +4,7 @@
   - on startup of builder check if .netrc-lock or .global-lock file/dir ist around
     and how old they are. Check if other builders are still running, if not, wipe
     the locks
+  - sometimes states don't change. Locks don't get deleted
 - allow platform,arch pairs (for instance (Arch_Extra,arm6l) or (Solaris_10,SPARC)).
   Currently all platforms have the same archs.
 - provide links to downloadable packages (for internal deployement tests)
@@ -31,3 +32,6 @@
     - cross-compilation (for building ok, but for testing? unit and system testing?)
     - what can we test this way? what not?
 - build a specific branch (maybe later if we have more than one main release branch)
+- more robust against overtaking builds
+  - start scheduled only after OBS has signalled scheduled/building for all jobs
+  - make sure no old builds are still running on the local build cluster
